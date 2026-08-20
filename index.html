@@ -1,5 +1,199 @@
-<script>
-  window.open()
-  location.reload()
-</script>
-<p>LOL</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>!!! ВЫ ПОБЕДИТЕЛЬ !!!</title>
+    <style>
+        /* Максимально токсичные стили */
+        body {
+            background-color: #ff00ff;
+            color: #ffff00;
+            font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+            margin: 0;
+            overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала */
+            user-select: none;
+        }
+
+        /* Имитация старого доброго тега blink */
+        .blink {
+            animation: blinker 0.2s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .marquee-container {
+            font-size: 3em;
+            font-weight: bold;
+            background: red;
+            color: yellow;
+            border: 5px dashed lime;
+            padding: 10px;
+        }
+
+        .hero-text {
+            text-align: center;
+            font-size: 4em;
+            text-shadow: 5px 5px 0px blue, -2px -2px 0px black;
+            margin-top: 50px;
+            cursor: crosshair;
+        }
+
+        /* Кнопка, которая убегает от курсора */
+        .runaway-btn {
+            position: absolute;
+            font-size: 2.5em;
+            font-weight: bold;
+            background: lime;
+            color: red;
+            border: 10px ridge gold;
+            padding: 20px;
+            cursor: pointer;
+            box-shadow: 10px 10px 30px #000;
+            transition: 0.1s; /* Немного плавности для побега */
+            z-index: 10;
+        }
+
+        /* Фейковые всплывающие окна */
+        .fake-popup {
+            position: absolute;
+            border: 3px solid #0000aa;
+            background: #c0c0c0;
+            color: #000;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            z-index: 999;
+            font-family: "Courier New", Courier, monospace;
+            width: 300px;
+        }
+
+        .popup-header {
+            background: #0000aa;
+            color: white;
+            padding: 5px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .popup-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .popup-btn {
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            padding: 5px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .popup-btn:active {
+            border: 2px inset #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <!-- Агрессивно быстрая бегущая строка -->
+        <marquee direction="right" scrollamount="40">СКАЧАТЬ БЕСПЛАТНО БЕЗ СМС И РЕГИСТРАЦИИ!!! 100% БЕЗ ВИРУСОВ!!! 🔥🔥🔥</marquee>
+    </div>
+
+    <h1 class="hero-text blink">🔥 ВЫ ВЫИГРАЛИ IPHONE 30 PRO MAX 🔥</h1>
+    
+    <p style="font-size: 2em; text-align: center; background: black; display: inline-block; width: 100%;">
+        Ваш IP-адрес был выбран <span style="color: lime;">СЛУЧАЙНО!</span> Кликните ниже, чтобы забрать приз до того, как истечет таймер: <span id="timer" style="color: red;">10:00</span>
+    </p>
+
+    <!-- Эта кнопка будет убегать -->
+    <button id="runaway" class="runaway-btn" style="top: 50%; left: 40%;">ЗАБРАТЬ ПРИЗ!!!</button>
+
+    <script>
+        // 1. Приветственный алерт-тролль
+        window.onload = () => {
+            setTimeout(() => {
+                alert("ПОЗДРАВЛЯЕМ! ВЫ СТАЛИ 1,000,000-м ПОСЕТИТЕЛЕМ!");
+                alert("Нажмите ОК чтобы забрать приз!");
+                alert("Ой, подождите...");
+                alert("Система проверяет вас на робота...");
+                alert("Одобрено! Теперь точно забирайте!");
+            }, 500);
+        };
+
+        // 2. Логика убегающей кнопки
+        const btn = document.getElementById('runaway');
+        btn.addEventListener('mouseover', () => {
+            // Вычисляем случайные координаты в пределах окна
+            const maxX = window.innerWidth - btn.offsetWidth;
+            const maxY = window.innerHeight - btn.offsetHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            btn.style.left = `${randomX}px`;
+            btn.style.top = `${randomY}px`;
+        });
+
+        // Если чудом удалось кликнуть (например, с клавиатуры)
+        btn.addEventListener('click', () => {
+            alert("КАК ТЫ ЭТО СДЕЛАЛ?! В любом случае, приза нет. ¯\\_(ツ)_/¯");
+        });
+
+       // 3. Генератор фейковых окон Windows (спам-режим)
+        const messages = [
+            "⚠️ ВНИМАНИЕ! Обнаружен вирус Win32.Trojan.Lol",
+            "Ваша подписка на WinRAR истекла!",
+            "HOT SINGLES IN YOUR AREA WANT TO CHAT",
+            "ОШИБКА 404: Мозг не найден",
+            "Ваш жесткий диск будет отформатирован через 5 секунд"
+        ];
+
+        // ЗЛОЙ СКРИПТ: Ловушка для кнопок
+        // Если попытаться закрыть окно, откроется пустая вкладка, а страница перезагрузится
+        const evilTrap = "window.open(); location.reload();";
+
+        setInterval(() => {
+            const popup = document.createElement('div');
+            popup.className = 'fake-popup';
+            
+            // Случайная позиция
+            popup.style.left = Math.random() * (window.innerWidth - 300) + 'px';
+            popup.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+            
+            // Выбор случайного сообщения
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            
+            popup.innerHTML = `
+                <div class="popup-header">
+                    <span>Системное сообщение</span>
+                    <!-- Кнопка X теперь с ловушкой -->
+                    <span style="cursor:pointer" onclick="${evilTrap}">X</span>
+                </div>
+                <div class="popup-content">
+                    <b>${randomMsg}</b><br>
+                    <!-- Кнопка ОК тоже с ловушкой -->
+                    <button class="popup-btn" onclick="${evilTrap}">ОК</button>
+                </div>
+            `;
+            
+            document.body.appendChild(popup);
+        }, 2000); // Новое окно каждые 2 секунды
+
+        // 4. Фейковый таймер, который заставляет паниковать (ускоряется к концу)
+        let timeLeft = 600;
+        const timerEl = document.getElementById('timer');
+        setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                const s = (timeLeft % 60).toString().padStart(2, '0');
+                timerEl.innerText = `${m}:${s}`;
+                // Меняем цвет на мигающий, когда остается мало времени
+                if (timeLeft < 10) timerEl.classList.add('blink');
+            }
+        }, 100); // Идет в 10 раз быстрее реального времени
+    </script>
+</body>
+</html>
