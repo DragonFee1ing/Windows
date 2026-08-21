@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 ТАЙНЫ СУДЬБЫ | Потомственная Ясновидящая Баба Люба</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #2a085c, #0f051d, #05010a);
+            color: #f3e5f5;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Золотое свечение */
+        .gold-text {
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .header {
+            padding: 40px 20px 20px;
+            border-bottom: 2px solid #ffd700;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .subhead {
+            font-size: 1.3em;
+            font-style: italic;
+            color: #d1c4e9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Карточка гадалки */
+        .oracle-card {
+            background: rgba(20, 10, 40, 0.8);
+            border: 2px solid #ab47bc;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 0 30px rgba(171, 71, 188, 0.3);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .oracle-avatar {
+            font-size: 80px;
+            background: #4a148c;
+            border: 3px solid #ffd700;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Интерактивный расклад Таро */
+        .cards-section {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px dashed #ffd700;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .cards-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .taro-card {
+            width: 120px;
+            height: 200px;
+            background: linear-gradient(135deg, #4a148c, #1a237e);
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            user-select: none;
+        }
+
+        .taro-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .taro-card.flipped {
+            background: #fff;
+            color: #000;
+            font-size: 1em;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Кнопки магических услуг */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .service-btn {
+            background: linear-gradient(to bottom, #8e24aa, #4a148c);
+            border: 1px solid #ffd700;
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .service-btn:hover {
+            background: #ab47bc;
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        /* Отзывы */
+        .reviews {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .review-item {
+            border-bottom: 1px dotted #ab47bc;
+            padding: 10px 0;
+        }
+
+        .review-author {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* Ловушка / Модалка */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #1a0933;
+            border: 3px solid #ffd700;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .magic-btn {
+            background: linear-gradient(to right, #ffd700, #ff8f00);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="gold-text">✨ ДАР СВЫШЕ И ТАЙНЫ СУДЬБЫ ✨</h1>
+        <div class="subhead">Потомственная ясновидящая в 7-м поколении — Баба Люба</div>
+    </div>
+
+    <div class="container">
+
+        <div class="oracle-card">
+            <div class="oracle-avatar">🔮</div>
+            <div>
+                <h3 class="gold-text" style="margin-top:0;">«Вижу твою боль, милая...»</h3>
+                <p>Муж охладел? Деньги уходят как вода сквозь пальцы? Соперница строит козни? Не печалься. Карты Таро и древняя белая магия укажут верный путь.</p>
+                <p style="color: #00e676; font-size: 0.9em;">🟢 Сейчас в сети | Принимаю онлайн со всего мира</p>
+            </div>
+        </div>
+
+        <!-- Секция Таро -->
+        <div class="cards-section">
+            <h2 class="gold-text">🎴 БЕСПЛАТНЫЙ РАСКЛАД НА СУДЬБУ</h2>
+            <p>Загадайте ваше самое сокровенное желание и выберите 3 карты:</p>
+            
+            <div class="cards-grid" id="cardContainer">
+                <div class="taro-card" onclick="pickCard(this, 'Прошлое')">🌙</div>
+                <div class="taro-card" onclick="pickCard(this, 'Настоящее')">⭐</div>
+                <div class="taro-card" onclick="pickCard(this, 'Будущее')">☀️</div>
+            </div>
+            
+            <p id="status-text" style="margin-top: 20px; font-style: italic; color: #ffd700;"></p>
+        </div>
+
+        <!-- Экспресс-услуги -->
+        <h2 class="gold-text">🕯️ СИЛЬНЕЙШИЕ ОБРЯДЫ И ОБРЯДОВЫЕ РАСКЛАДЫ</h2>
+        <div class="services-list">
+            <button class="service-btn" onclick="openMagicModal('Приворожить любимого')">❤️ Возврат мужа в семью (без греха)</button>
+            <button class="service-btn" onclick="openMagicModal('Снятие порчи')">🕯️ Очищение от родового проклятия</button>
+            <button class="service-btn" onclick="openMagicModal('Денежный поток')">💰 Открытие денежного канала</button>
+            <button class="service-btn" onclick="openMagicModal('Защита от соперницы')">🧿 Мощный отворот от соперницы</button>
+        </div>
+
+        <!-- Отзывы целевой аудитории -->
+        <div class="reviews">
+            <h3 class="gold-text" style="margin-top:0;">Благодарности очистившихся душ:</h3>
+            <div class="review-item">
+                <span class="review-author">Валентина Николаевна, 52 года (г. Самара):</span>
+                <p>«Муж ушел к молодой через 24 года брака. Баба Люба посмотрела по фото и сразу сказала — сделан сильный подклад! На третий день после обряда он вернулся с букетом роз и плакал на коленях!»</p>
+            </div>
+            <div class="review-item">
+                <span class="review-author">Тамара К., 47 лет (г. Пермь):</span>
+                <p>«Были долги по кредитам, работа не клеилась. После открытия денежного канала внезапно получила повышение и наследство от дальнего родственника. Спасибо вам, дорогая!»</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Модальное окно (Ловушка) -->
+    <div class="modal" id="magicModal">
+        <div class="modal-content">
+            <h2 class="gold-text" id="modalTitle">ОБРЯД ИДИЛЛИИ</h2>
+            <p id="modalDesc">Для привязки вашей энергетики к астральному каналу Бабы Любы введите данные вашей карты для символического пожертвования (10 рублей):</p>
+            
+            <input type="text" id="phoneNum" placeholder="Ваше имя и имя любимого" style="width: 90%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ffd700;">
+            <input type="text" id="photoUrl" placeholder="Дата рождения (ДД.ММ.ГГГГ)" style="width: 90%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ffd700;">
+
+            <button class="magic-btn" onclick="triggerTrap()">ПОЛУЧИТЬ ПОМОЩЬ БАБЫ ЛЮБЫ</button>
+        </div>
+    </div>
+
+    <script>
+        let picked = 0;
+        const cardMeanings = [
+            { name: "Башня", text: "🚨 Тяжелый сглаз на одиночество!" },
+            { name: "Дьявол", text: "⚠️ На вашем мужчине приворот!" },
+            { name: "10 Мечей", text: "⚡ Закрыты все финансовые дороги!" }
+        ];
+
+        function pickCard(element, phase) {
+            if (element.classList.contains('flipped')) return;
+
+            let cardData = cardMeanings[picked % cardMeanings.length];
+            element.classList.add('flipped');
+            element.innerHTML = `<b style="color:red">${cardData.name}</b><br><small style="font-size:0.7em; color:black;">${phase}</small>`;
+            
+            picked++;
+            document.getElementById('status-text').innerText = `Карта ${picked} из 3 раскрыла астральный след...`;
+
+            if (picked === 3) {
+                setTimeout(() => {
+                    openMagicModal("СРОЧНОЕ СНЯТИЕ ПОРЧИ");
+                }, 1000);
+            }
+        }
+
+        function openMagicModal(serviceName) {
+            document.getElementById('modalTitle').innerText = "🔮 " + serviceName.toUpperCase();
+            document.getElementById('modalDesc').innerHTML = `Карты показали <b>ОПАСНОСТЬ</b>! Чтобы Баба Люба запечатала негативную энергию, требуется срочная энергетическая привязка.`;
+            document.getElementById('magicModal').style.display = 'flex';
+        }
+
+        function triggerTrap() {
+            let modalContent = document.querySelector('.modal-content');
+            modalContent.innerHTML = `
+                <h1 style="font-size: 4em; margin: 0;">🧹</h1>
+                <h2 style="color: #ffd700;">БАБА ЛЮБА РАСКРЫЛА СЕКРЕТ!</h2>
+                <p style="font-size: 1.1em; line-height: 1.5;">Никаких «черных подкладов» и «родовых проклятий» не существует!</p>
+                <p>Все эти гадания — просто способ сыграть на ваших эмоциях и тревоге. Перестаньте верить шарлатанам в интернете, налейте себе вкусного чаю и навестите близких! ❤️</p>
+                <button class="magic-btn" onclick="location.reload()">ОБНОВИТЬ И УСПОКОИТЬСЯ</button>
+            `;
+            
+            setTimeout(() => {
+                window.open('index.html', '_blank');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
