@@ -1,1 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔞 Горячие видео БЕЗ ЦЕНЗУРЫ 🔞</title>
+    <style>
+        /* Классическая черно-оранжевая палитра */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
+        .header {
+            background-color: #1a1a1a;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #ff9900;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            background-color: #ff9900;
+            color: #000;
+            padding: 2px 5px;
+            border-radius: 5px;
+            margin-left: 2px;
+        }
+
+        .nav {
+            margin-left: 20px;
+            color: #ff9900;
+            font-weight: bold;
+        }
+
+        /* Контейнер с фейковым контентом */
+        .content {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Стили для фейковых видео */
+        .video-card {
+            width: 300px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+            border-color: #ff9900;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 170px;
+            background: repeating-linear-gradient(
+                45deg,
+                #222,
+                #222 10px,
+                #333 10px,
+                #333 20px
+            );
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Эффект размытия цензуры */
+        .thumbnail::after {
+            content: '18+ ЦЕНЗУРА';
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.8);
+            filter: blur(1px);
+        }
+
+        /* Фейковая кнопка Play */
+        .play-btn {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 3px solid #ff9900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .play-btn::before {
+            content: '▶';
+            color: #ff9900;
+            font-size: 1.5em;
+            margin-left: 5px;
+        }
+
+        .video-title {
+            padding: 10px;
+            font-size: 1em;
+            color: #ddd;
+        }
+
+        .video-meta {
+            padding: 0 10px 10px;
+            font-size: 0.8em;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ФЕЙКОВАЯ РЕКЛАМА */
+        .ad-banner {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            border: 2px dashed #ff0000;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-ai-game {
+            background: linear-gradient(45deg, #4a00e0, #8e2de2);
+            animation: neonPulse 1s infinite alternate;
+        }
+
+        .ad-onlyfans {
+            background: linear-gradient(45deg, #00aff0, #007bb5);
+            border: 3px solid #fff;
+            border-radius: 10px;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px #ff00ff; }
+            100% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .ad-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            margin: 5px 0;
+        }
+
+        .ad-subtitle {
+            font-size: 1em;
+            color: #ffff00;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">Hub<span>Hub</span></div>
+        <div class="nav">
+            Видео | Категории | OnlySimps | VR
+        </div>
+    </div>
+
+    <!-- Фейковая реклама AI-игры -->
+    <div class="ad-banner ad-ai-game" onclick="troll('game')">
+        <div class="ad-title">🤖 ВЫ НЕ ПРОДЕРЖИТЕСЬ И 5 МИНУТ! 🤖</div>
+        <div class="ad-subtitle">Новая 3D AI-игра для взрослых. Создай идеальную девушку!</div>
+        <div style="color: white; text-decoration: underline;">ИГРАТЬ БЕСПЛАТНО -></div>
+    </div>
+
+    <!-- Сетка фейковых видео -->
+    <div class="content">
+        <!-- Видео 1 -->
+        <div class="video-card" onclick="troll('video')">
+            <div class="thumbnail"><div class="play-btn"></div></div>
+            <div class="video-title">Сводная сестра застряла в текстурах стиральной машины [1080p]</div>
+            <div class="video-meta"><span>👁️ 1.2M</span><span>👍 98%</span></div>
+        </div>
+
+        <!-- Видео 2 -->
+        <div class="video-card" onclick="troll('video')">
+            <div class="thumbnail"><div class="play-btn"></div></div>
+            <div class="video-title">Горячая соседка просит починить роутер и отблагодарит...</div>
+            <div class="video-meta"><span>👁️ 845K</span><span>👍 95%</span></div>
+        </div>
+
+        <!-- Видео 3 -->
+        <div class="video-card" onclick="troll('video')">
+            <div class="thumbnail"><div class="play-btn"></div></div>
+            <div class="video-title">Немецкий сантехник прочищает трубы (Full HD)</div>
+            <div class="video-meta"><span>👁️ 2.5M</span><span>👍 89%</span></div>
+        </div>
+
+        <!-- Видео 4 -->
+        <div class="video-card" onclick="troll('video')">
+            <div class="thumbnail"><div class="play-btn"></div></div>
+            <div class="video-title">Азиатка тестирует огромный механический агрегат</div>
+            <div class="video-meta"><span>👁️ 500K</span><span>👍 99%</span></div>
+        </div>
+    </div>
+
+    <!-- Фейковая реклама OnlyFans -->
+    <div class="ad-banner ad-onlyfans" onclick="troll('onlyfans')">
+        <div class="ad-title">💙 OnlySimps 💙</div>
+        <div class="ad-subtitle">Секретные фото с моей веб-камеры! Скидка 99% только сегодня! 🌶️</div>
+        <div style="background: white; color: #00aff0; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold;">ПОДПИСАТЬСЯ ЗА 1$</div>
+    </div>
+
+    <script>
+        function troll(type) {
+            if (type === 'game') {
+                alert("ИГРА ЗАГРУЖАЕТСЯ...");
+                alert("Анализ ваших предпочтений...");
+                alert("ОШИБКА: Нейросеть отказалась с вами играть. 😭");
+            } else if (type === 'onlyfans') {
+                alert("Перенаправление на OnlySimps...");
+                alert("К сожалению, на вашей карте недостаточно средств даже для скидки в 99%.");
+            } else {
+                alert("Проверка возраста...");
+                let age = prompt("Вам уже исполнилось 18 лет? (Да/Нет)");
+                if (age && age.toLowerCase() === "да") {
+                    alert("Мамке твоей расскажу, что ты тут смотришь! 📸");
+                } else {
+                    alert("Тогда иди делай уроки!");
+                }
+            }
+
+            // После любого взаимодействия кидаем в бесконечный цикл ловушки или возвращаем на главную
+            setTimeout(() => {
+                for(let i=0; i<3; i++) {
+                    alert("ВИРУС ТРОЯН ОБНАРУЖЕН! ВАША ВЕБКАМЕРА ВЗЛОМАНА!");
+                }
+                window.open('index.html', '_blank'); // Открываем главную страницу тролля
+                location.reload(); // Перезагружаем эту страницу
+            }, 500);
+        }
+    </script>
+</body>
+</html>
