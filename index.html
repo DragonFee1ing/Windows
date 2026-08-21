@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>!!! ВЫ ПОБЕДИТЕЛЬ !!!</title>
     <style>
         body {
@@ -12,6 +12,7 @@
             margin: 0;
             overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала */
             user-select: none;
+            -webkit-user-select: none;
         }
 
         .blink {
@@ -37,9 +38,21 @@
             text-shadow: 5px 5px 0px blue, -2px -2px 0px black;
             margin-top: 50px;
             cursor: crosshair;
+            padding: 0 10px;
         }
 
-        /* Кнопка, которая убегает от курсора */
+        .promo-text {
+            font-size: 2em;
+            text-align: center;
+            background: black;
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 15px 10px;
+            box-sizing: border-box;
+        }
+
+        /* Кнопка, которая убегает от курсора и пальца */
         .runaway-btn {
             position: absolute;
             font-size: 2.5em;
@@ -52,6 +65,7 @@
             box-shadow: 10px 10px 30px #000;
             transition: 0.1s ease-out; /* Немного плавности для побега */
             z-index: 10;
+            white-space: nowrap;
         }
 
         /* Фейковые всплывающие окна */
@@ -64,6 +78,7 @@
             z-index: 999;
             font-family: "Courier New", Courier, monospace;
             width: 320px;
+            max-width: 90vw; /* Адаптив для окон */
         }
 
         .popup-header {
@@ -74,12 +89,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 0.9em;
         }
 
         .popup-content {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
         }
 
@@ -95,6 +111,29 @@
         .popup-btn:active {
             border: 2px inset #fff;
         }
+
+        /* МОБИЛЬНЫЙ АДАПТИВ */
+        @media (max-width: 600px) {
+            .marquee-container {
+                font-size: 1.5em;
+                border-width: 3px;
+                padding: 5px;
+            }
+            .hero-text {
+                font-size: 2.2em;
+                margin-top: 20px;
+                text-shadow: 3px 3px 0px blue, -1px -1px 0px black;
+            }
+            .promo-text {
+                font-size: 1.2em;
+                padding: 10px 5px;
+            }
+            .runaway-btn {
+                font-size: 1.5em;
+                padding: 15px;
+                border-width: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -106,12 +145,12 @@
 
     <h1 class="hero-text blink">🔥 ВЫ ВЫИГРАЛИ IPHONE 30 PRO MAX 🔥</h1>
     
-    <p style="font-size: 2em; text-align: center; background: black; display: inline-block; width: 100%; margin: 0; padding: 10px 0;">
+    <p class="promo-text">
         Ваш IP-адрес был выбран <span style="color: lime;">СЛУЧАЙНО!</span> Кликните ниже, чтобы забрать приз до того, как истечет таймер: <span id="timer" style="color: red;">10:00</span>
     </p>
 
     <!-- Эта кнопка будет убегать -->
-    <button id="runaway" class="runaway-btn" style="top: 50%; left: 40%;">ЗАБРАТЬ ПРИЗ!!!</button>
+    <button id="runaway" class="runaway-btn" style="top: 50%; left: 10%;">ЗАБРАТЬ ПРИЗ!!!</button>
 
     <script>
         // 1. Приветственный спам алертами
@@ -125,19 +164,29 @@
             }, 500);
         };
 
-        // 2. Логика убегающей кнопки
+        // 2. Логика убегающей кнопки (теперь и для тачскринов)
         const btn = document.getElementById('runaway');
-        btn.addEventListener('mouseenter', () => {
-            // Вычисляем случайные координаты в пределах окна с учетом размеров кнопки
-            const maxX = window.innerWidth - btn.offsetWidth;
-            const maxY = window.innerHeight - btn.offsetHeight;
+        
+        function moveButton(e) {
+            if (e.type === 'touchstart') {
+                e.preventDefault(); // Блокируем тап, чтобы кнопка успела убежать
+                // Микро-вибрация, чтобы казалось, что кнопка "вырывается"
+                if (navigator.vibrate) navigator.vibrate(50); 
+            }
+
+            // Вычисляем случайные координаты, не давая кнопке вылезти за экран
+            const maxX = Math.max(0, window.innerWidth - btn.offsetWidth - 20);
+            const maxY = Math.max(0, window.innerHeight - btn.offsetHeight - 20);
             
-            const randomX = Math.max(0, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(0, Math.floor(Math.random() * maxY));
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
             
             btn.style.left = `${randomX}px`;
             btn.style.top = `${randomY}px`;
-        });
+        }
+
+        btn.addEventListener('mouseenter', moveButton);
+        btn.addEventListener('touchstart', moveButton, { passive: false });
 
         // Если чудом удалось кликнуть
         btn.addEventListener('click', () => {
@@ -164,6 +213,11 @@
 
         // Ловушка: открывает новую вкладку и генерирует еще больше окон на текущей
         function triggerTrap() {
+            // Агрессивная вибрация в качестве наказания за клик
+            if (navigator.vibrate) {
+                navigator.vibrate([300, 100, 400, 100, 500]);
+            }
+
             let url = getRandomSpamUrl();
             window.open(url, '_blank', 'width=700,height=600');
             
@@ -187,16 +241,23 @@
         const uglyColors = ["#c0c0c0", "#ff99cc", "#ccffcc", "#ffff99", "#ffcc99", "#00ffff"];
 
         function createPopup() {
+            // Раздражающая двойная вибрация при появлении каждого окна
+            if (navigator.vibrate) {
+                navigator.vibrate([100, 50, 100]);
+            }
+
             const popup = document.createElement('div');
             popup.className = 'fake-popup';
             
-            // Рандомизация цвета фона для создания еще большей ряби в глазах
             const bgColor = uglyColors[Math.floor(Math.random() * uglyColors.length)];
             popup.style.backgroundColor = bgColor;
             
-            // Случайная позиция, чтобы окна перекрывали друг друга хаотично
-            popup.style.left = Math.random() * (window.innerWidth - 350) + 'px';
-            popup.style.top = Math.random() * (window.innerHeight - 200) + 'px';
+            // Безопасный расчет координат для мобилок
+            const maxLeft = Math.max(0, window.innerWidth - 320);
+            const maxTop = Math.max(0, window.innerHeight - 150);
+            
+            popup.style.left = Math.random() * maxLeft + 'px';
+            popup.style.top = Math.random() * maxTop + 'px';
             
             const randomMsg = messages[Math.floor(Math.random() * messages.length)];
             
@@ -230,7 +291,7 @@
                 // Таймер начинает бешено мигать, когда "времени" остается мало
                 if (timeLeft < 50) timerEl.classList.add('blink');
             }
-        }, 100); // Таймер идет в 10 раз быстрее реального времени для создания паники
+        }, 100);
 
         // 6. Засада по времени: через 8 секунд открываем первую спам-ссылку в фоне
         setTimeout(() => {
@@ -241,7 +302,6 @@
                 sneakyWindow.blur();
                 window.focus();
             }
-            // Вызываем дополнительное окно, чтобы жертва не скучала
             createPopup();
         }, 8000); 
     </script>
