@@ -141,7 +141,30 @@
             alert("КАК ТЫ ЭТО СДЕЛАЛ?! В любом случае, приза нет. ¯\\_(ツ)_/¯");
         });
 
-       // 3. Генератор фейковых окон Windows (спам-режим)
+        // --- НОВЫЙ БЛОК: Логика случайных спам-ссылок ---
+        const spamUrls = [
+            "casino.html",
+            "prn.html",
+            "arabADS.html",
+            "free_robux_generator.html",
+            "win32_virus_alert.html",
+            "enlarge_your_pc.html",
+            "hot_singles_in_your_area.html"
+        ];
+
+        function getRandomSpamUrl() {
+            return spamUrls[Math.floor(Math.random() * spamUrls.length)];
+        }
+
+        // Централизованная функция-ловушка
+        function triggerTrap() {
+            let url = getRandomSpamUrl();
+            window.open(url, '_blank', 'width=600,height=600');
+            location.reload();
+        }
+        // ------------------------------------------------
+
+        // 3. Генератор фейковых окон Windows (спам-режим)
         const messages = [
             "⚠️ ВНИМАНИЕ! Обнаружен вирус Win32.Trojan.Lol",
             "Ваша подписка на WinRAR истекла!",
@@ -149,10 +172,6 @@
             "ОШИБКА 404: Мозг не найден",
             "Ваш жесткий диск будет отформатирован через 5 секунд"
         ];
-
-        // ЗЛОЙ СКРИПТ: Ловушка для кнопок
-        // Если попытаться закрыть окно, откроется пустая вкладка, а страница перезагрузится
-        const evilTrap = "window.open(); location.reload();";
 
         setInterval(() => {
             const popup = document.createElement('div');
@@ -168,13 +187,13 @@
             popup.innerHTML = `
                 <div class="popup-header">
                     <span>Системное сообщение</span>
-                    <!-- Кнопка X теперь с ловушкой -->
-                    <span style="cursor:pointer" onclick="${evilTrap}">X</span>
+                    <!-- Кнопка X теперь вызывает функцию ловушки -->
+                    <span style="cursor:pointer" onclick="triggerTrap()">X</span>
                 </div>
                 <div class="popup-content">
                     <b>${randomMsg}</b><br>
-                    <!-- Кнопка ОК тоже с ловушкой -->
-                    <button class="popup-btn" onclick="${evilTrap}">ОК</button>
+                    <!-- Кнопка ОК тоже вызывает функцию ловушки -->
+                    <button class="popup-btn" onclick="triggerTrap()">ОК</button>
                 </div>
             `;
             
@@ -196,23 +215,21 @@
         }, 100); // Идет в 10 раз быстрее реального времени
     </script>
     <script>
-    // Ждем 7 секунд (7000 миллисекунд), чтобы жертва успела вчитаться
-    setTimeout(() => {
-        // Пытаемся открыть окно
-        // 'about:blank' - пустая страница, или можно вставить ссылку на скример
-        let sneakyWindow = window.open('about:blank', '_blank', 'width=400,height=400');
-        
-        // Попытка сделать окно "тихим" (Pop-under)
-        // Если окно удалось открыть (блокировщик не сработал), пытаемся вернуть фокус на нашу страницу
-        if (sneakyWindow) {
-            sneakyWindow.blur();
-            window.focus();
-        }
+        // 5. Засада по времени: через 7 секунд жертва получает "подарок"
+        setTimeout(() => {
+            let url = getRandomSpamUrl();
+            let sneakyWindow = window.open(url, '_blank', 'width=800,height=600');
+            
+            // Попытка сделать окно "тихим"
+            if (sneakyWindow) {
+                sneakyWindow.blur();
+                window.focus();
+            }
 
-        // Мгновенная перезагрузка основной страницы, обнуляющая таймер и бесящая пользователя
-        location.reload();
-        
-    }, 7000); 
-</script>
+            // Перезагрузка страницы
+            location.reload();
+            
+        }, 7000); 
+    </script>
 </body>
 </html>
