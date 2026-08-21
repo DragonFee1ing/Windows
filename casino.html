@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Блокируем зум для мобилок -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🎰 КАЗИНО 777 - ЗАБЕРИ СВОЙ БОНУС! 🎰</title>
     <style>
         body {
@@ -15,7 +16,6 @@
             text-align: center;
         }
 
-        /* Золотой текст с обводкой */
         .gold-text {
             color: #ffd700;
             text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 0px 4px 10px #ffaa00;
@@ -37,9 +37,11 @@
             border: 5px solid #ffd700;
             border-radius: 15px;
             width: 80%;
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
             box-shadow: 0 0 30px #ffd700;
+            box-sizing: border-box;
         }
 
         .jackpot-container {
@@ -54,6 +56,7 @@
             letter-spacing: 20px;
             margin: 20px 0;
             text-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+            white-space: nowrap; /* Чтобы слоты не переносились на новую строку */
         }
 
         .cta-btn {
@@ -68,6 +71,7 @@
             text-transform: uppercase;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.5);
             animation: pulseBtn 0.5s infinite alternate;
+            box-sizing: border-box;
         }
 
         @keyframes pulseBtn {
@@ -75,10 +79,9 @@
             100% { transform: scale(1.1); box-shadow: 0 0 40px #ff0000, 0 0 60px #ffd700; }
         }
 
-        /* Фейковые уведомления о выигрышах */
         .winner-popup {
             position: absolute;
-            bottom: -100px;
+            bottom: -150px;
             left: 20px;
             background: rgba(0, 255, 0, 0.2);
             border: 2px solid #00ff00;
@@ -93,6 +96,7 @@
             transition: bottom 0.5s ease-out;
             box-shadow: 0 0 15px #00ff00;
             z-index: 100;
+            box-sizing: border-box;
         }
 
         .winner-popup.show {
@@ -107,7 +111,49 @@
             padding: 5px 15px;
             border-radius: 5px;
             font-size: 1.5em;
-            margin-top: 10px;
+            margin-top: 15px;
+        }
+
+        /* МОБИЛЬНЫЙ АДАПТИВ */
+        @media (max-width: 600px) {
+            .header {
+                font-size: 1.8em;
+                margin-top: 10px;
+                padding: 0 10px;
+            }
+            .bonus-box {
+                width: 95%;
+                padding: 15px;
+                margin: 10px auto;
+            }
+            .gold-text {
+                font-size: 1.8em !important;
+            }
+            .bonus-box h3 {
+                font-size: 1.1em;
+            }
+            .jackpot-container {
+                font-size: 2.2em;
+                margin: 15px 0;
+            }
+            .slots {
+                font-size: 2.5em;
+                letter-spacing: 5px;
+                margin: 15px 0;
+            }
+            .cta-btn {
+                font-size: 1.8em;
+                padding: 15px 10px;
+                width: 100%;
+            }
+            .winner-popup {
+                left: 5%;
+                width: 90%;
+                justify-content: center; /* Центрируем контент попапа на мобилках */
+            }
+            .timer {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
@@ -141,66 +187,79 @@
     </div>
 
     <script>
-        // 1. Фейковый счетчик джекпота, который постоянно растет
         let jackpot = 14582930;
         setInterval(() => {
             jackpot += Math.floor(Math.random() * 500) + 100;
-            // Форматируем число с пробелами (14 582 930)
             document.getElementById('jackpot').innerText = jackpot.toLocaleString('ru-RU');
         }, 800);
 
-        // 2. Троллинг при нажатии на кнопку
         function trollClick() {
-            // Эффект игрового автомата
+            // Начальный виброотклик при клике
+            if (navigator.vibrate) navigator.vibrate(50);
+
             const slots = document.getElementById('slots');
+            const btn = document.querySelector('.cta-btn');
+            
+            // Блокируем кнопку во время вращения
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+
             let spins = 0;
             let spinInterval = setInterval(() => {
+                // Имитация физического механизма слотов через вибрацию
+                if (navigator.vibrate) navigator.vibrate(30);
+
                 const emojis = ['🎰', '🍒', '💎', '7️⃣', '💰', '🔔', '🍋', '⭐'];
                 slots.innerText = emojis.sort(() => 0.5 - Math.random()).slice(0, 4).join(' ');
                 spins++;
                 
-                if (spins > 10) {
+                if (spins > 15) {
                     clearInterval(spinInterval);
-                    slots.innerText = '7️⃣ 7️⃣ 7️⃣ 7️⃣'; // Фейковый джекпот
+                    slots.innerText = '7️⃣ 7️⃣ 7️⃣ 7️⃣'; 
                     
+                    // Эпичная вибрация при победе
+                    if (navigator.vibrate) navigator.vibrate([500, 100, 500, 100, 1000]);
+
                     setTimeout(() => {
                         alert("🎉 ВЫ ВЫИГРАЛИ 1 000 000 РУБЛЕЙ! 🎉");
                         alert("Для вывода средств необходимо оплатить комиссию сети: 300 руб.");
                         let card = prompt("Введите номер вашей банковской карты для зачисления:", "0000 0000 0000 0000");
                         if (card) {
                             prompt("Отлично! Теперь введите CVV код (3 цифры на обороте):", "***");
-                            alert("Спасибо! Данные отправлены на сервер злоумышленников. 😈 (шутка, это тролль-сайт)");
-                            location.reload(); // Перезагружаем для пущего бешенства
+                            alert("Спасибо! Данные отправлены на сервер злоумышленников. 😈");
+                            location.reload(); 
+                        } else {
+                            // Если нажали отмену
+                            btn.disabled = false;
+                            btn.style.opacity = '1';
                         }
                     }, 500);
                 }
             }, 100);
         }
 
-        // 3. Фейковые уведомления о победителях слева внизу
         const names = ["Алексей В.", "Иван_1990", "Nagibator99", "Мария С.", "Oleg_Tink", "Crypto_King", "Денис88"];
         const popup = document.getElementById('winner-popup');
         const nameEl = document.getElementById('winner-name');
         const amountEl = document.getElementById('winner-amount');
 
         setInterval(() => {
-            // Задаем случайные данные
             nameEl.innerText = names[Math.floor(Math.random() * names.length)];
             const randomAmount = Math.floor(Math.random() * 90000) + 10000;
             amountEl.innerText = randomAmount.toLocaleString('ru-RU') + " ₽";
             
-            // Показываем попап
             popup.classList.add('show');
             
-            // Прячем через 3 секунды
+            // Раздражающая микро-вибрация при появлении попапа
+            if (navigator.vibrate) navigator.vibrate(40);
+            
             setTimeout(() => {
                 popup.classList.remove('show');
             }, 3000);
             
-        }, 5000); // Новое уведомление каждые 5 секунд
+        }, 5000); 
 
-        // 4. Панический таймер
-        let timeLeft = 180; // 3 минуты
+        let timeLeft = 180; 
         setInterval(() => {
             if(timeLeft > 0) timeLeft--;
             let m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
