@@ -1,1 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 1 НОВОЕ СООБЩЕНИЕ 💌</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff00cc, #333399);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
+        /* Мигающее предупреждение наверху */
+        .top-warning {
+            background-color: red;
+            color: yellow;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 10px;
+            text-transform: uppercase;
+            animation: flash 0.3s infinite alternate;
+            border-bottom: 5px solid yellow;
+        }
+
+        @keyframes flash {
+            0% { background-color: red; color: yellow; }
+            100% { background-color: yellow; color: red; }
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #000;
+            margin-top: 20px;
+        }
+
+        .location-text {
+            font-size: 1.5em;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px dashed #00ffcc;
+            margin-bottom: 30px;
+        }
+
+        /* Фейковые профили */
+        .profiles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: #fff;
+            color: #000;
+            width: 250px;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 3px solid #ff00cc;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.1);
+        }
+
+        /* Силуэты вместо реальных фото для пущего эффекта "развода" */
+        .avatar {
+            font-size: 100px;
+            line-height: 1;
+            background: #f0f0f0;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #00ff00;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.8em;
+            padding: 5px 10px;
+            border-radius: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        .name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff00cc;
+        }
+
+        .distance {
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* Кнопка действия */
+        .cta-btn {
+            background: #00ffcc;
+            color: #000;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px #00ffcc;
+            animation: pulseBtn 0.5s infinite alternate;
+            margin-top: 30px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); box-shadow: 0 0 10px #00ffcc; }
+            100% { transform: scale(1.1); box-shadow: 0 0 30px #fff; }
+        }
+
+        /* Фейковый виджет чата в углу */
+        .fake-chat {
+            position: fixed;
+            bottom: -300px; /* Скрыт по умолчанию */
+            right: 20px;
+            width: 300px;
+            background: white;
+            border: 3px solid #ff00cc;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            color: black;
+            transition: bottom 0.5s ease-in-out;
+            z-index: 1000;
+        }
+
+        .fake-chat.show {
+            bottom: 0;
+        }
+
+        .chat-header {
+            background: #ff00cc;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-msg {
+            padding: 15px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        .chat-input {
+            padding: 10px;
+            background: #eee;
+            color: #888;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-warning">⚠️ ВНИМАНИЕ: ТОЛЬКО ДЛЯ ВЗРОСЛЫХ (18+) ⚠️</div>
+
+    <h1>🔥 ОДИНОКИЕ ДЕВУШКИ ЖДУТ ТЕБЯ 🔥</h1>
+    
+    <div class="location-text">
+        📍 Найдено <b>3</b> девушки в радиусе <span style="color: #00ffcc;">1.2 км</span> от вас!
+    </div>
+
+    <div class="profiles">
+        <div class="profile-card" onclick="troll('Анжела')">
+            <div class="status">ОНЛАЙН</div>
+            <div class="avatar">👱‍♀️</div>
+            <div class="name">Анжела, 19</div>
+            <div class="distance">📍 800 метров от тебя</div>
+            <p>"Ищу парня на вечер... Скучаю 💋"</p>
+        </div>
+
+        <div class="profile-card" onclick="troll('Киска99')">
+            <div class="status">ОНЛАЙН</div>
+            <div class="avatar">👩🏻</div>
+            <div class="name">Киска99, 21</div>
+            <div class="distance">📍 1.1 км от тебя</div>
+            <p>"Мой муж в командировке. Приедешь? 🤫"</p>
+        </div>
+
+        <div class="profile-card" onclick="troll('Сладкая')">
+            <div class="status">ОНЛАЙН</div>
+            <div class="avatar">👩🏼‍🦰</div>
+            <div class="name">Сладкая, 24</div>
+            <div class="distance">📍 1.5 км от тебя</div>
+            <p>"Отправлю фото без белья первому, кто напишет 🔥"</p>
+        </div>
+    </div>
+
+    <button class="cta-btn" onclick="troll('ALL')">НАЧАТЬ ЧАТ ПРЯМО СЕЙЧАС!</button>
+
+    <!-- Фейковый всплывающий чат -->
+    <div class="fake-chat" id="fakeChat" onclick="troll('chat')">
+        <div class="chat-header">
+            <span>🔴 Анжела печатает...</span>
+            <span style="cursor: pointer;">X</span>
+        </div>
+        <div class="chat-msg" id="chatMsg">
+            <i>(подключение к защищенному серверу...)</i>
+        </div>
+        <div class="chat-input">
+            Напишите сообщение...
+        </div>
+    </div>
+
+    <script>
+        // 1. Появление фейкового чата с задержкой
+        setTimeout(() => {
+            document.getElementById('fakeChat').classList.add('show');
+            
+            // Имитация печати сообщения
+            setTimeout(() => {
+                document.getElementById('chatMsg').innerHTML = "<b>Анжела:</b> Приветик! Я вижу ты рядом. Придешь в гости? У меня никого нет... 😈";
+                // Звук уведомления (опционально, но бесит)
+                try {
+                    let audio = new Audio('https://freesound.org/data/previews/415/415763_5121236-lq.mp3'); 
+                    audio.play();
+                } catch(e) {}
+            }, 2000);
+            
+        }, 3000); // Чат вылезает через 3 секунды
+
+        // 2. Логика троллинга при любом клике
+        function troll(target) {
+            alert("🔒 СИСТЕМА БЕЗОПАСНОСТИ 🔒");
+            alert("Чтобы доказать, что вы не робот и вам есть 18 лет, пожалуйста, введите данные кредитной карты.");
+            
+            let cc = prompt("Номер карты (16 цифр):");
+            if (cc) {
+                prompt("Отлично. Теперь CVV (3 цифры сзади):");
+                alert("АХАХАХА! Наивный! Я 45-летний мужик по имени Борис! Спасибо за данные карты! 🧔‍♂️🍻");
+            } else {
+                alert("Отказ? Тогда Анжела пошла к другому! 💔");
+            }
+
+            // Возврат в петлю троллинга
+            setTimeout(() => {
+                window.open('index.html', '_blank'); // Кидаем на главную спам-страницу
+                location.reload(); // Перезагружаем текущую ловушку
+            }, 500);
+        }
+    </script>
+</body>
+</html>
