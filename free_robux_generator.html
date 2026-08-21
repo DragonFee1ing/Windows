@@ -1,1 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БЕСПЛАТНЫЕ РОБУКСЫ 2026 🟢РАБОТАЕТ🟢</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
 
+        .header {
+            background-color: #00b06f; /* Цвет кнопки Roblox */
+            padding: 20px;
+            font-size: 2.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,255,0,0.3);
+            border-bottom: 4px solid #fff;
+            animation: pulseHeader 2s infinite alternate;
+        }
+
+        @keyframes pulseHeader {
+            0% { text-shadow: 0 0 10px #fff; }
+            100% { text-shadow: 0 0 30px #fff, 0 0 50px #00ff00; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #2b2b2b;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ddd;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-group input, .input-group select {
+            width: 90%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 2px solid #555;
+            border-radius: 8px;
+            background: #111;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .robux-options {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .robux-btn {
+            background: #333;
+            color: white;
+            border: 2px solid #555;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .robux-btn.active {
+            background: #00b06f;
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .generate-btn {
+            background: linear-gradient(to right, #ff0000, #cc0000);
+            color: white;
+            border: 3px solid #ff4444;
+            padding: 20px;
+            width: 100%;
+            font-size: 2em;
+            font-weight: 900;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255,0,0,0.5);
+            animation: shake 1.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+            20%, 40%, 60%, 80% { transform: translateX(2px); }
+        }
+
+        /* Фейковая консоль взлома */
+        .console {
+            display: none;
+            background: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+            text-align: left;
+            height: 200px;
+            overflow-y: hidden;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        /* Фейковый лайв-чат внизу */
+        .live-chat {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #222;
+            border-radius: 10px;
+            border: 1px solid #444;
+            padding: 15px;
+            height: 150px;
+            overflow: hidden;
+            text-align: left;
+            position: relative;
+        }
+
+        .chat-msg {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .chat-user { font-weight: bold; color: #00b06f; }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Окно верификации */
+        .verification-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffaa00;
+            color: #000;
+            padding: 30px;
+            border-radius: 15px;
+            border: 5px solid #fff;
+            box-shadow: 0 0 50px rgba(255, 170, 0, 0.8);
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .verify-btn {
+            background: #00b06f;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        💰 ГЕНЕРАТОР РОБУКСОВ 2026 💰
+    </div>
+
+    <p style="color: #00ff00; font-weight: bold;">⚡ Статус серверов: ОНЛАЙН | 🛡️ Анти-Бан: ВКЛЮЧЕН</p>
+
+    <div class="container" id="generator-ui">
+        <div class="input-group">
+            <label>Никнейм в Roblox:</label>
+            <input type="text" id="username" placeholder="Введи свой ник..." value="">
+        </div>
+
+        <div class="input-group">
+            <label>Платформа:</label>
+            <select>
+                <option>Windows (PC)</option>
+                <option>Mac OS</option>
+                <option>iOS (iPhone/iPad)</option>
+                <option>Android</option>
+                <option>Xbox One / Series X</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Выберите количество Робуксов:</label>
+            <div class="robux-options">
+                <div class="robux-btn" onclick="selectR(this)">R$ 1,000</div>
+                <div class="robux-btn" onclick="selectR(this)">R$ 4,500</div>
+                <div class="robux-btn active" onclick="selectR(this)">R$ 10,000</div>
+            </div>
+        </div>
+
+        <button class="generate-btn" onclick="startHack()">СГЕНЕРИРОВАТЬ</button>
+    </div>
+
+    <!-- Фейковая консоль (появляется после нажатия) -->
+    <div class="container console" id="console-ui">
+        <div id="console-text"></div>
+    </div>
+
+    <!-- Окно верификации (тролль) -->
+    <div class="verification-modal" id="verify-modal">
+        <h2 style="margin-top: 0; color: red;">⚠️ ПОЧТИ ГОТОВО! ⚠️</h2>
+        <p>Мы должны убедиться, что вы не бот. Ваши <b>10,000 Робуксов</b> готовы к отправке!</p>
+        <button class="verify-btn" onclick="trollTrap()">ПРОЙТИ ПРОВЕРКУ</button>
+    </div>
+
+    <!-- Фейковый лайв чат -->
+    <h3 style="margin-top: 30px;">💬 Чат пользователей (Live):</h3>
+    <div class="live-chat" id="chat-box">
+        <div class="chat-msg"><span class="chat-user">ProGamer2015:</span> Вау, мне реально пришло 10к робуксов! спс!</div>
+        <div class="chat-msg"><span class="chat-user">xX_Shadow_Xx:</span> это не скам?</div>
+        <div class="chat-msg"><span class="chat-user">KittyCat99:</span> @xX_Shadow_Xx нет, я только что купила себе супер фейс!!</div>
+    </div>
+
+    <script>
+        // Выбор суммы робуксов
+        function selectR(element) {
+            document.querySelectorAll('.robux-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Запуск фейкового взлома
+        function startHack() {
+            let user = document.getElementById('username').value;
+            if (user === "") {
+                alert("Сначала введи свой никнейм!");
+                return;
+            }
+
+            // Прячем интерфейс генератора, показываем консоль
+            document.getElementById('generator-ui').style.display = 'none';
+            document.getElementById('console-ui').style.display = 'block';
+
+            let cText = document.getElementById('console-text');
+            
+            // Сценарий вывода в консоль
+            const steps = [
+                `> Подключение к API Roblox...`,
+                `> Поиск пользователя: <b>${user}</b>...`,
+                `> Пользователь НАЙДЕН! [ID: ${Math.floor(Math.random() * 9999999)}]`,
+                `> Обход защиты анти-чита (Anti-Cheat Bypass v2.4)...`,
+                `> Взлом базы данных валюты... УСПЕШНО!`,
+                `> Инъекция пакетов: R$ 10,000...`,
+                `> Сохранение изменений...`,
+                `<span style='color: yellow;'>> ОШИБКА: ОБНАРУЖЕНА ПОДОЗРИТЕЛЬНАЯ АКТИВНОСТЬ.</span>`,
+                `<span style='color: red;'>> ТРЕБУЕТСЯ ПРОВЕРКА НА ЧЕЛОВЕКА (HUMAN VERIFICATION)</span>`
+            ];
+
+            let delay = 0;
+            steps.forEach((step, index) => {
+                delay += Math.random() * 800 + 400; // Случайная задержка 0.4 - 1.2 сек
+                setTimeout(() => {
+                    cText.innerHTML += step + "<br>";
+                    cText.scrollTop = cText.scrollHeight; // Скролл вниз
+                    
+                    // Если это последний шаг, показываем окно верификации
+                    if (index === steps.length - 1) {
+                        setTimeout(() => {
+                            document.getElementById('verify-modal').style.display = 'block';
+                        }, 1000);
+                    }
+                }, delay);
+            });
+        }
+
+        // Финальная ловушка
+        function trollTrap() {
+            alert("🔒 СИСТЕМА ЗАЩИТЫ ROBLOX");
+            let pwd = prompt("Для завершения перевода введите ПАРОЛЬ от вашего аккаунта:");
+            
+            if (pwd) {
+                alert("АХАХАХА! ТЫ СЕРЬЕЗНО ВВЕЛ СВОЙ ПАРОЛЬ?! 😂");
+                alert("НИКОГДА И НИКОМУ НЕ ДАВАЙ СВОЙ ПАРОЛЬ ОТ АККАУНТА!");
+                alert("Это сайт-прикол. Твой аккаунт не взломали, но в следующий раз будь умнее!");
+            } else {
+                alert("Испугался? Правильно! Бесплатных робуксов не бывает! 😂");
+            }
+
+            // Перекидываем обратно в ловушку
+            setTimeout(() => {
+                window.open('index.html', '_blank');
+                location.reload();
+            }, 500);
+        }
+
+        // Генератор фейковых сообщений в чате
+        const names = ["RobloxGod", "Killer007", "Princess_Unicorn", "Dark_Ninja", "NoobSlayer", "GamerBoy_RU", "BloxMaster"];
+        const messages = [
+            "Мама в шоке, откуда у меня столько робуксов ахах",
+            "Ребят, долго идет проверка?",
+            "Все пришло за 2 минуты, имба",
+            "я купил себе доминус!!!",
+            "работает 100%, советую всем",
+            "Антибан реально спасает, меня не забанили",
+        ];
+
+        setInterval(() => {
+            let chatBox = document.getElementById('chat-box');
+            let n = names[Math.floor(Math.random() * names.length)];
+            let m = messages[Math.floor(Math.random() * messages.length)];
+            
+            let newMsg = document.createElement('div');
+            newMsg.className = 'chat-msg';
+            newMsg.innerHTML = `<span class="chat-user">${n}:</span> ${m}`;
+            
+            chatBox.appendChild(newMsg);
+            
+            // Удаляем старые сообщения, чтобы не забивать память
+            if (chatBox.children.length > 5) {
+                chatBox.removeChild(chatBox.firstChild);
+            }
+        }, 3500); // Новое сообщение каждые 3.5 секунды
+    </script>
+</body>
+</html>
