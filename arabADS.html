@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحميل الملفات السحابي السريع</title> <!-- Быстрое облачное скачивание -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e8f5e9; /* Светло-зеленый фон */
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            color: #333;
+            text-align: center;
+        }
 
+        /* Шапка сайта */
+        .header {
+            background-color: #2e7d32; /* Темно-зеленый */
+            color: white;
+            padding: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-bottom: 5px solid #ffeb3b; /* Желтая полоса */
+        }
+
+        .container {
+            background-color: white;
+            width: 80%;
+            max-width: 600px;
+            margin: 40px auto;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .warning-banner {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border: 1px dashed #ffeeba;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0.5; }
+        }
+
+        /* Таблица с инфой о файле */
+        .file-info {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .file-info td {
+            padding: 12px;
+            border: 1px solid #c8e6c9;
+        }
+
+        .file-info tr:nth-child(even) {
+            background-color: #f1f8e9;
+        }
+
+        .file-info td:first-child {
+            font-weight: bold;
+            color: #2e7d32;
+            width: 40%;
+        }
+
+        .filename {
+            direction: ltr; /* Английское название файла слева направо */
+            display: inline-block;
+            color: #d32f2f;
+            font-weight: bold;
+            background: #ffebee;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Кнопки скачивания */
+        .btn-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+
+        .btn-fast {
+            background: linear-gradient(to bottom, #00c853, #009624);
+            border: 3px solid #00e676;
+            animation: pulseBtn 0.8s infinite alternate;
+        }
+
+        .btn-slow {
+            background: linear-gradient(to bottom, #4caf50, #388e3c);
+            border: 3px solid #81c784;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); box-shadow: 0 0 10px #00c853; }
+            100% { transform: scale(1.05); box-shadow: 0 0 25px #00e676; }
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Фейковый антивирус */
+        .antivirus {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .badges {
+            font-size: 2em;
+            margin-top: 10px;
+        }
+
+        /* Рекламные баннеры по бокам (фейковые) */
+        .ad-banner {
+            background-color: #ddd;
+            color: #888;
+            padding: 50px 10px;
+            margin: 20px 0;
+            border: 1px dashed #999;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        مركز تحميل الخليج الذهبي <!-- Золотой залив (популярное название) -->
+    </div>
+
+    <div class="container">
+        
+        <div class="warning-banner">
+            يجب تحميل الملف الآن! الرابط سيعمل لمدة 3 دقائق فقط. <!-- Скачайте сейчас! Ссылка работает только 3 минуты -->
+        </div>
+
+        <h2>تفاصيل الملف <!-- Детали файла --></h2>
+        
+        <table class="file-info">
+            <tr>
+                <td>اسم الملف (Имя файла):</td>
+                <td><span class="filename">GTA_VI_Mobile_Full_Cracked.apk</span></td>
+            </tr>
+            <tr>
+                <td>حجم الملف (Размер):</td>
+                <td style="direction: ltr;">45.2 GB</td>
+            </tr>
+            <tr>
+                <td>تاريخ الرفع (Загружено):</td>
+                <td>اليوم (Сегодня)</td>
+            </tr>
+            <tr>
+                <td>عدد التحميلات (Скачиваний):</td>
+                <td id="downloads" style="direction: ltr; font-weight: bold; color: green;">8,492</td>
+            </tr>
+        </table>
+
+        <div class="ad-banner">
+            إعلان: احصل على تأشيرة ذهبية مجاناً! اضغط هنا <!-- Фейковая реклама: Получи золотую визу бесплатно! -->
+        </div>
+
+        <div class="btn-container">
+            <!-- Две одинаково соблазнительные зеленые кнопки -->
+            <button class="btn btn-fast" onclick="trollDownload('fast')">
+                تحميل سريع و مباشر 🚀
+                <div style="font-size: 0.5em; font-weight: normal;">(للمشتركين VIP)</div>
+            </button>
+            
+            <button class="btn btn-slow" onclick="trollDownload('slow')">
+                تحميل مجاني بطيء ⬇️
+                <div style="font-size: 0.5em; font-weight: normal;">(انتظار 60 ثانية)</div>
+            </button>
+        </div>
+
+        <div class="antivirus">
+            ✅ تم فحص الملف وهو خالي من الفيروسات بنسبة 100% <!-- Файл проверен, 100% без вирусов -->
+            <div class="badges">🛡️ 🔒 🟢</div>
+        </div>
+
+    </div>
+
+    <script>
+        // 1. Фейково увеличиваем количество скачиваний
+        let dlCount = 8492;
+        setInterval(() => {
+            dlCount += Math.floor(Math.random() * 5);
+            document.getElementById('downloads').innerText = dlCount.toLocaleString('en-US');
+        }, 3000);
+
+        // 2. Логика троллинга при нажатии на любую из кнопок
+        function trollDownload(type) {
+            if (type === 'fast') {
+                // Если выбрал "быструю" премиум загрузку
+                let phone = prompt("للحصول على التحميل السريع، يرجى إدخال رقم هاتفك:", "+971"); // Просьба ввести номер телефона
+                if (phone) {
+                    alert("تم خصم 50 دولار من رصيدك بنجاح! شكراً لك. 💸 (шутка)");
+                    location.reload(); // Перезагружаем страницу-ловушку
+                } else {
+                    alert("يجب إدخال الرقم!"); // Обязательно введите номер
+                }
+            } else {
+                // Если выбрал "медленную" загрузку
+                alert("جاري تحضير الرابط... الرجاء الانتظار 999 ساعة."); // Подготовка ссылки... подождите 999 часов
+                
+                // Имитируем зависание и спам
+                setTimeout(() => {
+                    for(let i=0; i<5; i++) {
+                        alert("فيروس!! 🦠"); // Вирус!!
+                    }
+                    window.open('index.html', '_blank'); // Кидаем обратно на главный index.html
+                    location.reload();
+                }, 1000);
+            }
+        }
+    </script>
+
+</body>
+</html>
