@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <!-- Жесткая блокировка зума для мобильных -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>💌 1 НОВОЕ СООБЩЕНИЕ 💌</title> <!--[cite: 8]-->
+    <title>💌 1 НОВОЕ СООБЩЕНИЕ 💌</title>  
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
         body {
-            margin: 0; /*[cite: 8]*/
-            padding: 0; /*[cite: 8]*/
+            margin: 0;  
+            padding: 0;  
             background: #0f0c29;
             background-image: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
             font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #ffffff; /*[cite: 8]*/
-            text-align: center; /*[cite: 8]*/
-            overflow-x: hidden; /*[cite: 8]*/
+            color: #ffffff;  
+            text-align: center;  
+            overflow-x: hidden;  
             min-height: 100vh;
         }
 
@@ -29,7 +29,7 @@
             font-size: 0.9em;
             font-weight: 600;
             padding: 12px;
-            text-transform: uppercase; /*[cite: 8]*/
+            text-transform: uppercase;  
             letter-spacing: 1px;
             backdrop-filter: blur(10px);
             position: sticky;
@@ -87,12 +87,12 @@
 
         .profile-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px; /*[cite: 8]*/
+            border-radius: 20px;  
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative; /*[cite: 8]*/
-            cursor: pointer; /*[cite: 8]*/
+            position: relative;  
+            cursor: pointer;  
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: left;
         }
@@ -143,8 +143,8 @@
         }
 
         .name {
-            font-size: 1.6em; /*[cite: 8]*/
-            font-weight: 800; /*[cite: 8]*/
+            font-size: 1.6em;  
+            font-weight: 800;  
             color: #fff;
             margin-bottom: 5px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
@@ -153,7 +153,7 @@
         .distance {
             color: #ff719a;
             font-size: 0.9em;
-            font-weight: 600; /*[cite: 8]*/
+            font-weight: 600;  
             margin-bottom: 10px;
         }
 
@@ -170,10 +170,10 @@
             color: #fff;
             font-size: 1.2em;
             font-weight: 800;
-            padding: 20px 40px; /*[cite: 8]*/
-            border: none; /*[cite: 8]*/
-            border-radius: 50px; /*[cite: 8]*/
-            cursor: pointer; /*[cite: 8]*/
+            padding: 20px 40px;  
+            border: none;  
+            border-radius: 50px;  
+            cursor: pointer;  
             box-shadow: 0 10px 25px rgba(255, 42, 95, 0.4);
             transition: all 0.3s ease;
             margin: 10px auto 50px;
@@ -187,29 +187,29 @@
 
         /* Фейковый чат */
         .fake-chat {
-            position: fixed; /*[cite: 8]*/
+            position: fixed;  
             bottom: -400px; 
-            right: 20px; /*[cite: 8]*/
+            right: 20px;  
             width: 340px;
             background: #1c1c1e;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px 16px 0 0; /*[cite: 8]*/
+            border-radius: 16px 16px 0 0;  
             box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
             transition: bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 1000; /*[cite: 8]*/
+            z-index: 1000;  
             overflow: hidden;
         }
 
         .fake-chat.show {
-            bottom: 0; /*[cite: 8]*/
+            bottom: 0;  
         }
 
         .chat-header {
             background: rgba(255, 255, 255, 0.05);
-            padding: 15px; /*[cite: 8]*/
-            display: flex; /*[cite: 8]*/
+            padding: 15px;  
+            display: flex;  
             align-items: center;
-            justify-content: space-between; /*[cite: 8]*/
+            justify-content: space-between;  
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -354,7 +354,7 @@
 </head>
 <body>
 
-    <div class="top-warning">⚠️ Внимание: Контент 18+ ⚠️</div> <!--[cite: 8]-->
+    <div class="top-warning">⚠️ Внимание: Контент 18+ ⚠️</div>  
 
     <h1>🔥 РЯДОМ С ТОБОЙ 🔥</h1>
     
@@ -367,14 +367,14 @@
         <!-- КАРТОЧКА 1 -->
         <div class="profile-card" onclick="openVerification()">
             <div class="profile-photo-container">
-                <div class="status-badge"><div class="pulsing-dot" style="width:6px;height:6px;"></div> ОНЛАЙН</div> <!--[cite: 8]-->
+                <div class="status-badge"><div class="pulsing-dot" style="width:6px;height:6px;"></div> ОНЛАЙН</div>  
                 <!-- ЗАМЕНИТЕ SRC НА СВОЕ ФОТО -->
                 <img src="https://via.placeholder.com/400x500/1a1a2e/ffffff?text=Photo+1" class="profile-photo" alt="Анжела">
                 
                 <div class="profile-info">
-                    <div class="name">Анжела, 19</div> <!--[cite: 8]-->
-                    <div class="distance">📍 800 метров от тебя</div> <!--[cite: 8]-->
-                    <p class="bio">«Ищу парня на вечер... Скучаю 💋»</p> <!--[cite: 8]-->
+                    <div class="name">Анжела, 19</div>  
+                    <div class="distance">📍 800 метров от тебя</div>  
+                    <p class="bio">«Ищу парня на вечер... Скучаю 💋»</p>  
                 </div>
             </div>
         </div>
@@ -382,14 +382,14 @@
         <!-- КАРТОЧКА 2 -->
         <div class="profile-card" onclick="openVerification()">
             <div class="profile-photo-container">
-                <div class="status-badge"><div class="pulsing-dot" style="width:6px;height:6px;"></div> ОНЛАЙН</div> <!--[cite: 8]-->
+                <div class="status-badge"><div class="pulsing-dot" style="width:6px;height:6px;"></div> ОНЛАЙН</div>  
                 <!-- ЗАМЕНИТЕ SRC НА СВОЕ ФОТО -->
                 <img src="https://via.placeholder.com/400x500/1a1a2e/ffffff?text=Photo+2" class="profile-photo" alt="Киска99">
                 
                 <div class="profile-info">
-                    <div class="name">Киска99, 21</div> <!--[cite: 8]-->
-                    <div class="distance">📍 1.1 км от тебя</div> <!--[cite: 8]-->
-                    <p class="bio">«Мой парень в командировке. Приедешь? 🤫»</p> <!--[cite: 8]-->
+                    <div class="name">Киска99, 21</div>  
+                    <div class="distance">📍 1.1 км от тебя</div>  
+                    <p class="bio">«Мой парень в командировке. Приедешь? 🤫»</p>  
                 </div>
             </div>
         </div>
@@ -397,20 +397,20 @@
         <!-- КАРТОЧКА 3 -->
         <div class="profile-card" onclick="openVerification()">
             <div class="profile-photo-container">
-                <div class="status-badge"><div class="pulsing-dot" style="width:6px;height:6px;"></div> ОНЛАЙН</div> <!--[cite: 8]-->
+                <div class="status-badge"><div class="pulsing-dot" style="width:6px;height:6px;"></div> ОНЛАЙН</div>  
                 <!-- ЗАМЕНИТЕ SRC НА СВОЕ ФОТО -->
                 <img src="https://via.placeholder.com/400x500/1a1a2e/ffffff?text=Photo+3" class="profile-photo" alt="Сладкая">
                 
                 <div class="profile-info">
-                    <div class="name">Сладкая, 24</div> <!--[cite: 8]-->
-                    <div class="distance">📍 1.5 км от тебя</div> <!--[cite: 8]-->
-                    <p class="bio">«Отправлю фото без белья первому, кто напишет 🔥»</p> <!--[cite: 8]-->
+                    <div class="name">Сладкая, 24</div>  
+                    <div class="distance">📍 1.5 км от тебя</div>  
+                    <p class="bio">«Отправлю фото без белья первому, кто напишет 🔥»</p>  
                 </div>
             </div>
         </div>
     </div>
 
-    <button class="cta-btn" onclick="openVerification()">НАЧАТЬ ЧАТ ПРЯМО СЕЙЧАС</button> <!--[cite: 8]-->
+    <button class="cta-btn" onclick="openVerification()">НАЧАТЬ ЧАТ ПРЯМО СЕЙЧАС</button>  
 
     <!-- Всплывающий чат -->
     <div class="fake-chat" id="fakeChat" onclick="openVerification()">
@@ -427,7 +427,7 @@
         </div>
         <div class="chat-msg-container">
             <div class="chat-bubble" id="chatMsg">
-                Приветик! Вижу, ты рядом. Придешь в гости? У меня никого нет... 😈 <!--[cite: 8]-->
+                Приветик! Вижу, ты рядом. Придешь в гости? У меня никого нет... 😈  
             </div>
         </div>
         <div style="padding: 15px; background: #1c1c1e; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 0.9em;">
@@ -462,7 +462,7 @@
     <script>
         // Появление чата
         setTimeout(() => {
-            document.getElementById('fakeChat').classList.add('show'); /*[cite: 8]*/
+            document.getElementById('fakeChat').classList.add('show');  
             if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
             
             setTimeout(() => {
@@ -471,7 +471,7 @@
                 document.querySelector('.chat-header-info div:nth-child(2)').innerText = 'В сети';
                 document.querySelector('.chat-header-info div:nth-child(2)').style.color = '#888';
             }, 1500);
-        }, 3000); /*[cite: 8]*/
+        }, 3000);  
 
         // Форматирование инпутов карты
         document.getElementById('cardNum').addEventListener('input', function (e) {
@@ -528,7 +528,7 @@
 
         function resetTrap() {
             // Перезагрузка страницы для нового круга ввода
-            location.reload(); /*[cite: 8]*/
+            location.reload();  
         }
     </script>
 </body>
