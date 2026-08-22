@@ -2,270 +2,421 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- Блокируем зум для мобилок -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎰 КАЗИНО 777 - ЗАБЕРИ СВОЙ БОНУС! 🎰</title>
+    <title>VULKAN ROYAL | Premium Casino</title>
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --accent-gold: #e2b714;
+            --accent-red: #d32f2f;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle, #4a0000 0%, #000000 100%);
-            color: #ffd700;
-            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 0%, #2a1a3a 0%, var(--bg-dark) 80%);
+            color: #fff;
             overflow: hidden;
-            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .gold-text {
-            color: #ffd700;
-            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 0px 4px 10px #ffaa00;
-        }
-
+        /* Хедер */
         .header {
-            font-size: 3em;
-            margin-top: 20px;
-            animation: flashWarning 0.5s infinite alternate;
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 10;
         }
 
-        @keyframes flashWarning {
-            0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-            100% { color: #ffd700; text-shadow: 0 0 20px #ffaa00; }
+        .logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(226, 183, 20, 0.5);
+            letter-spacing: 2px;
         }
 
-        .bonus-box {
-            background: rgba(0, 0, 0, 0.8);
-            border: 5px solid #ffd700;
-            border-radius: 15px;
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
+        .user-balance {
+            font-weight: 700;
+            background: rgba(226, 183, 20, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: var(--accent-gold);
+        }
+
+        /* Основной блок */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             padding: 20px;
-            box-shadow: 0 0 30px #ffd700;
-            box-sizing: border-box;
+            z-index: 5;
         }
 
-        .jackpot-container {
+        .promo-title {
+            font-size: 2em;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Джекпот */
+        .jackpot-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .jackpot-label {
+            color: var(--accent-red);
+            font-weight: 900;
+            font-size: 1.2em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .jackpot-amount {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px rgba(226, 183, 20, 0.6);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Слоты */
+        .slot-machine {
+            display: flex;
+            gap: 15px;
+            background: linear-gradient(145deg, #1a1a24, #0a0a0f);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 20px rgba(226, 183, 20, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .reel {
+            width: 80px;
+            height: 100px;
+            background: #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: 4em;
-            color: #00ff00;
-            text-shadow: 0 0 15px #00ff00;
-            margin: 20px 0;
+            box-shadow: inset 0 5px 15px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
         }
 
-        .slots {
-            font-size: 5em;
-            letter-spacing: 20px;
-            margin: 20px 0;
-            text-shadow: 5px 5px 15px rgba(0,0,0,0.8);
-            white-space: nowrap; /* Чтобы слоты не переносились на новую строку */
+        .reel-content {
+            position: absolute;
+            transition: transform 0.1s linear;
         }
 
-        .cta-btn {
-            background: linear-gradient(to bottom, #ff0000, #990000);
-            border: 5px solid #ffd700;
-            color: white;
-            font-size: 3em;
-            font-weight: bold;
-            padding: 20px 50px;
+        /* Кнопка */
+        .spin-btn {
+            background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+            color: #000;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.8em;
+            font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.5);
-            animation: pulseBtn 0.5s infinite alternate;
-            box-sizing: border-box;
+            box-shadow: 0 10px 20px rgba(226, 183, 20, 0.4);
+            transition: transform 0.1s, filter 0.2s;
         }
 
-        @keyframes pulseBtn {
-            0% { transform: scale(1); box-shadow: 0 0 10px #ff0000; }
-            100% { transform: scale(1.1); box-shadow: 0 0 40px #ff0000, 0 0 60px #ffd700; }
-        }
+        .spin-btn:active { transform: scale(0.95); }
+        .spin-btn:disabled { filter: grayscale(1); cursor: not-allowed; }
 
-        .winner-popup {
-            position: absolute;
-            bottom: -150px;
+        /* Всплывающее окно победителей (Лайв фид) */
+        .live-feed {
+            position: fixed;
+            bottom: -100px;
             left: 20px;
-            background: rgba(0, 255, 0, 0.2);
-            border: 2px solid #00ff00;
-            color: #fff;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
             padding: 10px 20px;
-            border-radius: 10px;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: bottom 0.5s ease-out;
-            box-shadow: 0 0 15px #00ff00;
+            gap: 15px;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 100;
-            box-sizing: border-box;
         }
 
-        .winner-popup.show {
-            bottom: 20px;
+        .live-feed.show { bottom: 20px; }
+        
+        /* Модальные окна (Касса / Оплата) */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
         }
 
-        .timer {
-            font-family: monospace;
-            background: red;
-            color: white;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 1.5em;
-            margin-top: 15px;
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-content {
+            background: #1e1e2d;
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s;
         }
 
-        /* МОБИЛЬНЫЙ АДАПТИВ */
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+
+        .modal-title { font-size: 1.5em; font-weight: 700; margin-bottom: 20px; text-align: center; }
+        .win-amount { color: #4ade80; font-size: 2.5em; font-weight: 900; text-align: center; margin-bottom: 20px; }
+
+        /* Форма карты */
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { display: block; font-size: 0.8em; color: #a1a1aa; margin-bottom: 5px; }
+        .input-group input {
+            width: 100%; padding: 12px 15px;
+            background: rgba(0,0,0,0.3); border: 1px solid #3f3f46;
+            color: #fff; border-radius: 8px; font-size: 1.1em;
+            outline: none; transition: border-color 0.2s;
+        }
+        .input-group input:focus { border-color: var(--accent-gold); }
+        
+        .card-row { display: flex; gap: 15px; }
+        
+        .submit-btn {
+            width: 100%; padding: 15px;
+            background: #4ade80; color: #000;
+            border: none; border-radius: 8px;
+            font-size: 1.2em; font-weight: 700;
+            cursor: pointer; margin-top: 10px;
+        }
+
+        /* Тролль-сообщение */
+        .troll-screen {
+            display: none;
+            text-align: center;
+        }
+        .troll-icon { font-size: 4em; margin-bottom: 15px; }
+
         @media (max-width: 600px) {
-            .header {
-                font-size: 1.8em;
-                margin-top: 10px;
-                padding: 0 10px;
-            }
-            .bonus-box {
-                width: 95%;
-                padding: 15px;
-                margin: 10px auto;
-            }
-            .gold-text {
-                font-size: 1.8em !important;
-            }
-            .bonus-box h3 {
-                font-size: 1.1em;
-            }
-            .jackpot-container {
-                font-size: 2.2em;
-                margin: 15px 0;
-            }
-            .slots {
-                font-size: 2.5em;
-                letter-spacing: 5px;
-                margin: 15px 0;
-            }
-            .cta-btn {
-                font-size: 1.8em;
-                padding: 15px 10px;
-                width: 100%;
-            }
-            .winner-popup {
-                left: 5%;
-                width: 90%;
-                justify-content: center; /* Центрируем контент попапа на мобилках */
-            }
-            .timer {
-                font-size: 1.2em;
-            }
+            .jackpot-amount { font-size: 2.5em; }
+            .reel { width: 70px; height: 90px; font-size: 3em; }
+            .spin-btn { font-size: 1.5em; padding: 15px 40px; }
         }
     </style>
 </head>
 <body>
 
-    <h1 class="header">⚠️ ВАШ IP АДРЕС ВЫБРАН! ⚠️</h1>
+    <header class="header">
+        <div class="logo">VULKAN💎</div>
+        <div class="user-balance" id="balance">Баланс: 0 ₽</div>
+    </header>
 
-    <div class="bonus-box">
-        <h2 class="gold-text" style="font-size: 2.5em; margin: 0;">🎁 БОНУС 500% НА ПЕРВЫЙ ДЕПОЗИТ 🎁</h2>
-        <h3 style="color: #fff; margin-top: 10px;">+ 250 БЕСПЛАТНЫХ ВРАЩЕНИЙ</h3>
+    <main class="main-container">
+        <div class="promo-title">🔥 100 ФРИСПИНОВ ДЛЯ ВАС 🔥</div>
         
-        <div class="jackpot-container">
-            ДЖЕКПОТ: <br> <span id="jackpot">14 582 930</span> ₽
+        <div class="jackpot-box">
+            <div class="jackpot-label">Прогрессивный джекпот</div>
+            <div class="jackpot-amount"><span id="jackpot">14,582,930</span> ₽</div>
         </div>
 
-        <div class="slots" id="slots">🎰 🍒 💎 7️⃣</div>
+        <div class="slot-machine">
+            <div class="reel"><div class="reel-content" id="reel1">🍒</div></div>
+            <div class="reel"><div class="reel-content" id="reel2">🍋</div></div>
+            <div class="reel"><div class="reel-content" id="reel3">💎</div></div>
+        </div>
 
-        <button class="cta-btn" onclick="trollClick()">КРУТИТЬ И ЗАБРАТЬ!</button>
-        
-        <br>
-        <div class="timer">ПРЕДЛОЖЕНИЕ СГОРИТ ЧЕРЕЗ: <span id="countdown">03:00</span></div>
+        <button class="spin-btn" id="spinBtn" onclick="startSpin()">КРУТИТЬ (БЕСПЛАТНО)</button>
+    </main>
+
+    <!-- Лайв фид (фейк) -->
+    <div id="liveFeed" class="live-feed">
+        <div style="font-size: 2em;">🎰</div>
+        <div>
+            <div style="font-size: 0.9em; color: #a1a1aa;"><span id="lf-name" style="color: #fff; font-weight: bold;">User777</span> выиграл</div>
+            <div style="color: #4ade80; font-weight: 900; font-size: 1.2em;"><span id="lf-amount">50,000</span> ₽</div>
+        </div>
     </div>
 
-    <!-- Всплывающее окно фейкового победителя -->
-    <div id="winner-popup" class="winner-popup">
-        <span style="font-size: 2em;">🤑</span>
-        <div>
-            <span id="winner-name" style="color: #ffd700;">Игрок777</span> только что выиграл<br>
-            <span id="winner-amount" style="color: #00ff00; font-size: 1.2em;">50 000 ₽</span>
+    <!-- Модалка вывода средств (Скам-форма) -->
+    <div class="modal-overlay" id="withdrawModal">
+        <div class="modal-content">
+            <!-- Экран 1: Выигрыш -->
+            <div id="screen-win">
+                <div class="modal-title">🎉 ВЫ СОДРВАЛИ КУШ! 🎉</div>
+                <div class="win-amount">1 000 000 ₽</div>
+                <p style="text-align: center; color: #a1a1aa; margin-bottom: 20px; font-size: 0.9em;">
+                    Для моментального вывода средств на вашу карту, пожалуйста, подтвердите реквизиты. Комиссия шлюза 0%.
+                </p>
+                <div class="input-group">
+                    <label>Номер карты</label>
+                    <input type="text" id="cc-num" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="card-row">
+                    <div class="input-group" style="flex: 1;">
+                        <label>Срок действия</label>
+                        <input type="text" id="cc-date" placeholder="ММ/ГГ" maxlength="5">
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>CVV/CVC</label>
+                        <input type="password" id="cc-cvv" placeholder="***" maxlength="3">
+                    </div>
+                </div>
+                <button class="submit-btn" onclick="submitCard()">ПОЛУЧИТЬ ВЫПЛАТУ</button>
+            </div>
+
+            <!-- Экран 2: Троллинг -->
+            <div id="screen-troll" class="troll-screen">
+                <div class="troll-icon">😈</div>
+                <div class="modal-title" style="color: var(--accent-red);">ДАННЫЕ УСПЕШНО УКРАДЕНЫ!</div>
+                <p style="color: #a1a1aa; line-height: 1.5;">
+                    Спасибо за предоставленную информацию. Ваша карта успешно привязана к серверу злоумышленников. <br><br>
+                    <span style="color: #fff; font-weight: bold;">Приятного дня! 💸</span>
+                </p>
+                <button class="submit-btn" style="background: #3f3f46; color: #fff; margin-top: 20px;" onclick="location.reload()">ПОНЯЛ...</button>
+            </div>
         </div>
     </div>
 
     <script>
-        let jackpot = 14582930;
+        // 1. Анимация джекпота 
+        let currentJackpot = 14582930;
         setInterval(() => {
-            jackpot += Math.floor(Math.random() * 500) + 100;
-            document.getElementById('jackpot').innerText = jackpot.toLocaleString('ru-RU');
-        }, 800);
+            currentJackpot += Math.floor(Math.random() * 800) + 150; // Более агрессивный рост
+            document.getElementById('jackpot').innerText = currentJackpot.toLocaleString('en-US');
+        }, 1500);
 
-        function trollClick() {
-            // Начальный виброотклик при клике
-            if (navigator.vibrate) navigator.vibrate(50);
-
-            const slots = document.getElementById('slots');
-            const btn = document.querySelector('.cta-btn');
+        // 2. Фейковый лайв фид победителей 
+        const names = ["Alex_99", "Igor**", "Nagibator", "Maria_S", "CryptoKing", "LuckyStrike", "Dmitriy_77"];
+        const feed = document.getElementById('liveFeed');
+        
+        setInterval(() => {
+            if (feed.classList.contains('show')) return;
             
-            // Блокируем кнопку во время вращения
+            document.getElementById('lf-name').innerText = names[Math.floor(Math.random() * names.length)];
+            const amount = Math.floor(Math.random() * 95000) + 5000;
+            document.getElementById('lf-amount').innerText = amount.toLocaleString('en-US');
+            
+            feed.classList.add('show');
+            if (navigator.vibrate) navigator.vibrate(30); // Микровибрация
+            
+            setTimeout(() => feed.classList.remove('show'), 4000);
+        }, 7000);
+
+        // 3. Логика вращения слотов
+        const emojis = ['🍒', '🍋', '💎', '🔔', '🍉', '⭐', '7️⃣'];
+        const winEmoji = '7️⃣';
+
+        function startSpin() {
+            const btn = document.getElementById('spinBtn');
             btn.disabled = true;
-            btn.style.opacity = '0.5';
+            btn.innerText = 'КРУТИМ...';
+            
+            if (navigator.vibrate) navigator.vibrate(50); // Отклик на нажатие
 
-            let spins = 0;
-            let spinInterval = setInterval(() => {
-                // Имитация физического механизма слотов через вибрацию
-                if (navigator.vibrate) navigator.vibrate(30);
+            const reels = [
+                document.getElementById('reel1'),
+                document.getElementById('reel2'),
+                document.getElementById('reel3')
+            ];
 
-                const emojis = ['🎰', '🍒', '💎', '7️⃣', '💰', '🔔', '🍋', '⭐'];
-                slots.innerText = emojis.sort(() => 0.5 - Math.random()).slice(0, 4).join(' ');
-                spins++;
-                
-                if (spins > 15) {
-                    clearInterval(spinInterval);
-                    slots.innerText = '7️⃣ 7️⃣ 7️⃣ 7️⃣'; 
-                    
-                    // Эпичная вибрация при победе
-                    if (navigator.vibrate) navigator.vibrate([500, 100, 500, 100, 1000]);
+            let spinIntervals = [];
 
-                    setTimeout(() => {
-                        alert("🎉 ВЫ ВЫИГРАЛИ 1 000 000 РУБЛЕЙ! 🎉");
-                        alert("Для вывода средств необходимо оплатить комиссию сети: 300 руб.");
-                        let card = prompt("Введите номер вашей банковской карты для зачисления:", "0000 0000 0000 0000");
-                        if (card) {
-                            prompt("Отлично! Теперь введите CVV код (3 цифры на обороте):", "***");
-                            alert("Спасибо! Данные отправлены на сервер злоумышленников. 😈");
-                            location.reload(); 
-                        } else {
-                            // Если нажали отмену
-                            btn.disabled = false;
-                            btn.style.opacity = '1';
-                        }
-                    }, 500);
-                }
-            }, 100);
+            // Запускаем безумную смену эмодзи
+            reels.forEach((reel, index) => {
+                let interval = setInterval(() => {
+                    reel.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                }, 50); // Очень быстрая смена
+                spinIntervals.push(interval);
+            });
+
+            // Останавливаем барабаны по очереди для реалистичности
+            setTimeout(() => stopReel(reels[0], spinIntervals[0]), 1000);
+            setTimeout(() => stopReel(reels[1], spinIntervals[1]), 1500);
+            setTimeout(() => {
+                stopReel(reels[2], spinIntervals[2]);
+                triggerWin();
+            }, 2200);
         }
 
-        const names = ["Алексей В.", "Иван_1990", "Nagibator99", "Мария С.", "Oleg_Tink", "Crypto_King", "Денис88"];
-        const popup = document.getElementById('winner-popup');
-        const nameEl = document.getElementById('winner-name');
-        const amountEl = document.getElementById('winner-amount');
+        function stopReel(reel, interval) {
+            clearInterval(interval);
+            reel.innerText = winEmoji; // Всегда выпадает 7
+            if (navigator.vibrate) navigator.vibrate(40); // Стук барабана
+        }
 
-        setInterval(() => {
-            nameEl.innerText = names[Math.floor(Math.random() * names.length)];
-            const randomAmount = Math.floor(Math.random() * 90000) + 10000;
-            amountEl.innerText = randomAmount.toLocaleString('ru-RU') + " ₽";
-            
-            popup.classList.add('show');
-            
-            // Раздражающая микро-вибрация при появлении попапа
-            if (navigator.vibrate) navigator.vibrate(40);
+        // 4. Логика победы и скам-модалки 
+        function triggerWin() {
+            if (navigator.vibrate) navigator.vibrate([500, 100, 500]); // Эпичная вибрация
             
             setTimeout(() => {
-                popup.classList.remove('show');
-            }, 3000);
-            
-        }, 5000); 
+                document.getElementById('balance').innerText = 'Баланс: 1 000 000 ₽';
+                document.getElementById('withdrawModal').classList.add('active');
+            }, 800);
+        }
 
-        let timeLeft = 180; 
-        setInterval(() => {
-            if(timeLeft > 0) timeLeft--;
-            let m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-            let s = (timeLeft % 60).toString().padStart(2, '0');
-            document.getElementById('countdown').innerText = `${m}:${s}`;
-        }, 1000);
+        // Автоформатирование номера карты (простая реализация)
+        document.getElementById('cc-num').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+        });
+        
+        document.getElementById('cc-date').addEventListener('input', function (e) {
+            let val = this.value.replace(/\D/g, '');
+            if(val.length > 2) val = val.substring(0, 2) + '/' + val.substring(2, 4);
+            this.value = val;
+        });
+
+        // Отправка (Шутка)
+        function submitCard() {
+            const btn = document.querySelector('.submit-btn');
+            btn.innerText = 'ОБРАБОТКА БАНКОМ...';
+            btn.style.background = '#e2b714';
+            
+            // Имитация задержки сети
+            setTimeout(() => {
+                document.getElementById('screen-win').style.display = 'none';
+                document.getElementById('screen-troll').style.display = 'block';
+                if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 800]); // Злобная вибрация
+            }, 2000);
+        }
     </script>
 </body>
 </html>
