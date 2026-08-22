@@ -3,307 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>!!! ВЫ ПОБЕДИТЕЛЬ !!!</title>
+    <title>Системное уведомление / System Alert</title>
     <style>
-        body {
-            background-color: #ff00ff;
-            color: #ffff00;
-            font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала */
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             user-select: none;
             -webkit-user-select: none;
+            -webkit-touch-callout: none;
         }
 
-        .blink {
-            animation: blinker 0.2s linear infinite;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала[cite: 12] */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        /* Имитация проверки Cloudflare при загрузке */
+        .fake-loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s;
         }
         
-        @keyframes blinker {
-            50% { opacity: 0; }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 4px solid #f3f3f3; border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
         }
 
-        .marquee-container {
-            font-size: 3em;
-            font-weight: bold;
-            background: red;
-            color: yellow;
-            border: 5px dashed lime;
-            padding: 10px;
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .hero-text {
+        /* Основной контейнер ловушки */
+        .scam-container {
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 40px 30px;
             text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .alert-icon {
             font-size: 4em;
-            text-shadow: 5px 5px 0px blue, -2px -2px 0px black;
-            margin-top: 50px;
-            cursor: crosshair;
-            padding: 0 10px;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
         }
 
-        .promo-text {
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .title {
             font-size: 2em;
-            text-align: center;
-            background: black;
-            display: block;
-            width: 100%;
-            margin: 0;
-            padding: 15px 10px;
-            box-sizing: border-box;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Кнопка, которая убегает от курсора и пальца */
+        .desc {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .timer-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        .timer {
+            color: var(--danger);
+            font-weight: 900;
+            font-size: 1.5em;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .timer.blink { animation: blinker 0.3s linear infinite; } /*[cite: 12] */
+        @keyframes blinker { 50% { opacity: 0; } } /*[cite: 12] */
+
+        /* Смертоносная кнопка */
+        .btn-wrapper {
+            position: relative;
+            height: 60px;
+            width: 100%;
+        }
+
         .runaway-btn {
             position: absolute;
-            font-size: 2.5em;
-            font-weight: bold;
-            background: lime;
-            color: red;
-            border: 10px ridge gold;
-            padding: 20px;
-            cursor: pointer;
-            box-shadow: 10px 10px 30px #000;
-            transition: 0.1s ease-out; /* Немного плавности для побега */
-            z-index: 10;
-            white-space: nowrap;
-        }
-
-        /* Фейковые всплывающие окна */
-        .fake-popup {
-            position: absolute;
-            border: 3px solid #0000aa;
-            background: #c0c0c0;
-            color: #000;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
-            z-index: 999;
-            font-family: "Courier New", Courier, monospace;
-            width: 320px;
-            max-width: 90vw; /* Адаптив для окон */
-        }
-
-        .popup-header {
-            background: #0000aa;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--success);
             color: white;
-            padding: 5px 10px;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
             font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9em;
-        }
-
-        .popup-content {
-            padding: 15px;
-            text-align: center;
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        .popup-btn {
-            background: #c0c0c0;
-            border: 2px outset #fff;
-            padding: 5px 20px;
-            font-weight: bold;
+            border-radius: 30px;
             cursor: pointer;
-            margin-top: 15px;
-        }
-        
-        .popup-btn:active {
-            border: 2px inset #fff;
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+            white-space: nowrap;
+            transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1); /* Плавный отскок */
+            z-index: 100;
         }
 
-        /* МОБИЛЬНЫЙ АДАПТИВ */
-        @media (max-width: 600px) {
-            .marquee-container {
-                font-size: 1.5em;
-                border-width: 3px;
-                padding: 5px;
-            }
-            .hero-text {
-                font-size: 2.2em;
-                margin-top: 20px;
-                text-shadow: 3px 3px 0px blue, -1px -1px 0px black;
-            }
-            .promo-text {
-                font-size: 1.2em;
-                padding: 10px 5px;
-            }
-            .runaway-btn {
-                font-size: 1.5em;
-                padding: 15px;
-                border-width: 5px;
-            }
+        /* Современные фейковые уведомления */
+        .modern-toast {
+            position: fixed;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid #334155;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            z-index: 9999;
+            width: 320px;
+            max-width: 90vw; /* Адаптив для окон[cite: 12] */
+            animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px) scale(0.9); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .toast-icon { font-size: 1.5em; }
+        .toast-content { flex: 1; }
+        .toast-title { font-weight: bold; font-size: 0.9em; margin-bottom: 5px; color: var(--danger); }
+        .toast-msg { font-size: 0.85em; color: var(--text-muted); }
+        .toast-close { color: #64748b; font-weight: bold; padding-left: 10px; }
+
+        @media (max-width: 600px) { /* МОБИЛЬНЫЙ АДАПТИВ[cite: 12] */
+            .title { font-size: 1.5em; }
+            .scam-container { padding: 30px 20px; }
+            .runaway-btn { font-size: 1.1em; padding: 12px 24px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="marquee-container">
-        <!-- Агрессивно быстрая бегущая строка -->
-        <marquee direction="right" scrollamount="40">СКАЧАТЬ БЕСПЛАТНО БЕЗ СМС И РЕГИСТРАЦИИ!!! 100% БЕЗ ВИРУСОВ!!! 🔥🔥🔥</marquee>
+    <!-- Фейковый лоадер -->
+    <div class="fake-loader" id="loader">
+        <div class="spinner"></div>
+        <h2>Проверка безопасности подключения...</h2>
+        <p style="color: #666; margin-top: 10px;">Пожалуйста, подождите, мы проверяем ваш браузер.</p>
     </div>
 
-    <h1 class="hero-text blink">🔥 ВЫ ВЫИГРАЛИ IPHONE 30 PRO MAX 🔥</h1>
-    
-    <p class="promo-text">
-        Ваш IP-адрес был выбран <span style="color: lime;">СЛУЧАЙНО!</span> Кликните ниже, чтобы забрать приз до того, как истечет таймер: <span id="timer" style="color: red;">10:00</span>
-    </p>
+    <!-- Основной контент -->
+    <div class="scam-container">
+        <div class="alert-icon">🎁</div>
+        <div class="title">ВЫ ВЫИГРАЛИ IPHONE 30 PRO MAX!</div> <!--[cite: 12] -->
+        <div class="desc">
+            Ваш IP-адрес был выбран <b style="color: var(--success);">СЛУЧАЙНО!</b> Наш алгоритм определил вас как победителя акции. <!--[cite: 12] -->
+        </div>
+        
+        <div class="timer-box">
+            Резерв приза истекает через:<br>
+            <span class="timer" id="timer">10:00</span> <!--[cite: 12] -->
+        </div>
 
-    <!-- Эта кнопка будет убегать -->
-    <button id="runaway" class="runaway-btn" style="top: 50%; left: 10%;">ЗАБРАТЬ ПРИЗ!!!</button>
+        <div class="btn-wrapper" id="arena">
+            <button class="runaway-btn" id="runaway">ЗАБРАТЬ ПРИЗ!!!</button> <!--[cite: 12] -->
+        </div>
+    </div>
 
     <script>
-        // 1. Приветственный спам алертами
+        // 1. Имитация снятия защиты Cloudflare
         window.onload = () => {
             setTimeout(() => {
-                alert("ВНИМАНИЕ! ВЫ СТАЛИ 1,000,000-м ПОСЕТИТЕЛЕМ СЕТИ!");
-                alert("Нажмите ОК чтобы забрать ваш приз!");
-                alert("Подключение к зашифрованному серверу выдачи призов...");
-                alert("Проверка анти-бот пройдена!");
-                alert("Одобрено! У вас есть 10 минут, чтобы нажать на кнопку!");
-            }, 500);
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+                
+                // Легкая вибрация, когда появляется сам скам
+                if (navigator.vibrate) navigator.vibrate(100);
+            }, 2500);
         };
 
-        // 2. Логика убегающей кнопки (теперь и для тачскринов)
+        // 2. Логика плавно убегающей кнопки (60 FPS)
         const btn = document.getElementById('runaway');
-        
+        const arena = document.getElementById('arena');
+        let currentX = -50; // В процентах от центра
+        let currentY = -50;
+
         function moveButton(e) {
             if (e.type === 'touchstart') {
-                e.preventDefault(); // Блокируем тап, чтобы кнопка успела убежать
-                // Микро-вибрация, чтобы казалось, что кнопка "вырывается"
-                if (navigator.vibrate) navigator.vibrate(50); 
+                e.preventDefault(); // Блокируем тап, чтобы кнопка успела убежать[cite: 12]
+                if (navigator.vibrate) navigator.vibrate(50); // Микро-вибрация[cite: 12]
             }
 
-            // Вычисляем случайные координаты, не давая кнопке вылезти за экран
-            const maxX = Math.max(0, window.innerWidth - btn.offsetWidth - 20);
-            const maxY = Math.max(0, window.innerHeight - btn.offsetHeight - 20);
+            // Переводим кнопку в fixed для свободного полета по всему экрану
+            btn.style.position = 'fixed';
             
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
+            // Вычисляем случайную позицию в пределах видимости
+            const maxX = window.innerWidth - btn.offsetWidth;
+            const maxY = window.innerHeight - btn.offsetHeight;
             
-            btn.style.left = `${randomX}px`;
-            btn.style.top = `${randomY}px`;
+            const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+            
+            // Используем transform для идеальной плавности
+            btn.style.left = '0';
+            btn.style.top = '0';
+            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
         }
 
-        btn.addEventListener('mouseenter', moveButton);
-        btn.addEventListener('touchstart', moveButton, { passive: false });
+        btn.addEventListener('mouseenter', moveButton); //[cite: 12]
+        btn.addEventListener('touchstart', moveButton, { passive: false }); //[cite: 12]
 
-        // Если чудом удалось кликнуть
-        btn.addEventListener('click', () => {
-            alert("ОШИБКА СЕРВЕРА 0x0000007B!");
-            alert("Кто-то другой пытается перехватить ваш приз! ПОВТОРИТЕ ПОПЫТКУ!");
-            triggerTrap();
+        // Если чудом удалось кликнуть (или нажали через Tab+Enter)
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            triggerTrap(); //[cite: 12]
         });
 
-        // 3. Логика случайных спам-ссылок
+        // 3. Логика ловушки
         const spamUrls = [
-            "casino.html",
-            "prn.html",
-            "arabADS.html",
-            "free_robux_generator.html",
-            "cryptoscam.html",
-            "enlarge_your_pc.html",
-            "magic_taro_oracle.html",
-            "hot_singles_in_your_area.html"
+            "casino.html", //[cite: 12]
+            "prn.html", //[cite: 12]
+            "arabADS.html", //[cite: 12]
+            "free_robux_generator.html", //[cite: 12]
+            "cryptoscam.html", //[cite: 12]
+            "enlarge_your_pc.html", //[cite: 12]
+            "magic_taro_oracle.html", //[cite: 12]
+            "hot_singles_in_your_area.html" //[cite: 12]
         ];
 
         function getRandomSpamUrl() {
-            return spamUrls[Math.floor(Math.random() * spamUrls.length)];
+            return spamUrls[Math.floor(Math.random() * spamUrls.length)]; //[cite: 12]
         }
 
-        // Ловушка: открывает новую вкладку и генерирует еще больше окон на текущей
+        let isTrapped = false;
         function triggerTrap() {
-            // Агрессивная вибрация в качестве наказания за клик
             if (navigator.vibrate) {
-                navigator.vibrate([300, 100, 400, 100, 500]);
+                navigator.vibrate([300, 100, 400, 100, 500]); // Агрессивная вибрация в качестве наказания за клик[cite: 12]
             }
 
-            let url = getRandomSpamUrl();
-            window.open(url, '_blank', 'width=700,height=600');
+            // Открываем новую вкладку[cite: 12]
+            window.open(getRandomSpamUrl(), '_blank');
             
-            // Наказание за попытку закрыть окно: спавним еще 3 новых!
-            for(let i = 0; i < 3; i++) {
-                setTimeout(createPopup, i * 200); 
+            // Спавним окна на текущей[cite: 12]
+            for(let i = 0; i < 4; i++) {
+                setTimeout(createToast, i * 300);
             }
         }
 
-        // 4. Генератор фейковых окон Windows (бесконечный спам-режим)
+        // Перехватываем клик мимо кнопки
+        document.body.addEventListener('click', (e) => {
+            if (e.target.id !== 'runaway' && document.getElementById('loader').style.display === 'none') {
+                triggerTrap();
+            }
+        });
+
+        // 4. Генератор современных фейковых окон
         const messages = [
-            "⚠️ ВНИМАНИЕ! Обнаружен вирус Win32.Trojan.Lol",
-            "Ваша лицензия WinRAR недействительна!",
-            "HOT SINGLES IN YOUR AREA WANT TO CHAT",
-            "ОШИБКА 404: Системный диск перегружен",
-            "Ваш жесткий диск будет отформатирован через 5 секунд",
-            "КРИТИЧЕСКАЯ ОШИБКА: Нехватка виртуальной памяти"
+            { icon: "🚨", title: "КРИТИЧЕСКАЯ УГРОЗА", text: "Обнаружен вирус Win32.Trojan.Lol" }, //[cite: 12]
+            { icon: "💋", title: "НОВОЕ СООБЩЕНИЕ", text: "HOT SINGLES IN YOUR AREA WANT TO CHAT" }, //[cite: 12]
+            { icon: "⚠️", title: "СИСТЕМНАЯ ОШИБКА", text: "Нехватка виртуальной памяти. Системный диск перегружен." }, //[cite: 12]
+            { icon: "💳", title: "ОШИБКА ОПЛАТЫ", text: "Ваша транзакция отклонена. Обновите данные." }
         ];
 
-        // Токсичные цвета для фона окон
-        const uglyColors = ["#c0c0c0", "#ff99cc", "#ccffcc", "#ffff99", "#ffcc99", "#00ffff"];
+        function createToast() {
+            if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
 
-        function createPopup() {
-            // Раздражающая двойная вибрация при появлении каждого окна
-            if (navigator.vibrate) {
-                navigator.vibrate([100, 50, 100]);
-            }
-
-            const popup = document.createElement('div');
-            popup.className = 'fake-popup';
+            const toast = document.createElement('div');
+            toast.className = 'modern-toast';
             
-            const bgColor = uglyColors[Math.floor(Math.random() * uglyColors.length)];
-            popup.style.backgroundColor = bgColor;
+            // Безопасный расчет координат[cite: 12]
+            const maxLeft = Math.max(10, window.innerWidth - 340);
+            const maxTop = Math.max(10, window.innerHeight - 100);
             
-            // Безопасный расчет координат для мобилок
-            const maxLeft = Math.max(0, window.innerWidth - 320);
-            const maxTop = Math.max(0, window.innerHeight - 150);
+            toast.style.left = Math.random() * maxLeft + 'px'; //[cite: 12]
+            toast.style.top = Math.random() * maxTop + 'px'; //[cite: 12]
             
-            popup.style.left = Math.random() * maxLeft + 'px';
-            popup.style.top = Math.random() * maxTop + 'px';
+            const msg = messages[Math.floor(Math.random() * messages.length)]; //[cite: 12]
             
-            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-            
-            popup.innerHTML = `
-                <div class="popup-header">
-                    <span>Системное сообщение</span>
-                    <span style="cursor:pointer; background: red; padding: 0 5px; border: 1px solid white;" onclick="triggerTrap()">X</span>
+            toast.innerHTML = `
+                <div class="toast-icon">${msg.icon}</div>
+                <div class="toast-content">
+                    <div class="toast-title">${msg.title}</div>
+                    <div class="toast-msg">${msg.text}</div>
                 </div>
-                <div class="popup-content">
-                    <b>${randomMsg}</b><br>
-                    <button class="popup-btn" onclick="triggerTrap()">ОК</button>
-                </div>
+                <div class="toast-close">✕</div>
             `;
             
-            document.body.appendChild(popup);
+            // Нажатие на крестик только создает новые окна[cite: 12]
+            toast.addEventListener('click', (e) => {
+                e.stopPropagation(); // Не даем всплыть до body
+                toast.remove();
+                triggerTrap(); //[cite: 12]
+            });
+            
+            document.body.appendChild(toast); //[cite: 12]
         }
 
-        // Запускаем автоматическое появление окон каждую 1.5 секунды
-        setInterval(createPopup, 1500); 
-
-        // 5. Фейковый таймер (ускоряется к концу)
-        let timeLeft = 600;
-        const timerEl = document.getElementById('timer');
+        // Автоматический спам окнами
         setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
-                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-                const s = (timeLeft % 60).toString().padStart(2, '0');
-                timerEl.innerText = `${m}:${s}`;
-                
-                // Таймер начинает бешено мигать, когда "времени" остается мало
-                if (timeLeft < 50) timerEl.classList.add('blink');
+            if(document.getElementById('loader').style.display === 'none') {
+                createToast();
             }
-        }, 100);
+        }, 2000);
 
-        // 6. Засада по времени: через 8 секунд открываем первую спам-ссылку в фоне
-        setTimeout(() => {
-            let url = getRandomSpamUrl();
-            let sneakyWindow = window.open(url, '_blank', 'width=800,height=600');
-            
-            if (sneakyWindow) {
-                sneakyWindow.blur();
-                window.focus();
+        // 5. Фейковый таймер[cite: 12]
+        let timeLeft = 600; //[cite: 12]
+        const timerEl = document.getElementById('timer'); //[cite: 12]
+        setInterval(() => {
+            if (timeLeft > 0 && document.getElementById('loader').style.display === 'none') {
+                timeLeft--; //[cite: 12]
+                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0'); //[cite: 12]
+                const s = (timeLeft % 60).toString().padStart(2, '0'); //[cite: 12]
+                timerEl.innerText = `${m}:${s}`; //[cite: 12]
+                
+                if (timeLeft < 50) timerEl.classList.add('blink'); //[cite: 12]
             }
-            createPopup();
-        }, 8000); 
+        }, 1000); // Поставил 1000мс (реальная секунда), чтобы выглядело достовернее
+
+        // 6. Засада по времени (pop-under)[cite: 12]
+        setTimeout(() => {
+            if(document.getElementById('loader').style.display === 'none') {
+                let sneakyWindow = window.open(getRandomSpamUrl(), '_blank', 'width=800,height=600'); //[cite: 12]
+                if (sneakyWindow) {
+                    sneakyWindow.blur(); //[cite: 12]
+                    window.focus(); //[cite: 12]
+                }
+            }
+        }, 12000); 
     </script>
 </body>
 </html>
