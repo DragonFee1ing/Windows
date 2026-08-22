@@ -28,7 +28,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала[cite: 12] */
+            overflow: hidden; /* Запрещаем скролл, чтобы жертва не сбежала  */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -119,8 +119,8 @@
             font-variant-numeric: tabular-nums;
         }
         
-        .timer.blink { animation: blinker 0.3s linear infinite; } /*[cite: 12] */
-        @keyframes blinker { 50% { opacity: 0; } } /*[cite: 12] */
+        .timer.blink { animation: blinker 0.3s linear infinite; } /*  */
+        @keyframes blinker { 50% { opacity: 0; } } /*  */
 
         /* Смертоносная кнопка */
         .btn-wrapper {
@@ -163,7 +163,7 @@
             gap: 15px;
             z-index: 9999;
             width: 320px;
-            max-width: 90vw; /* Адаптив для окон[cite: 12] */
+            max-width: 90vw; /* Адаптив для окон  */
             animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
         }
@@ -179,7 +179,7 @@
         .toast-msg { font-size: 0.85em; color: var(--text-muted); }
         .toast-close { color: #64748b; font-weight: bold; padding-left: 10px; }
 
-        @media (max-width: 600px) { /* МОБИЛЬНЫЙ АДАПТИВ[cite: 12] */
+        @media (max-width: 600px) { /* МОБИЛЬНЫЙ АДАПТИВ  */
             .title { font-size: 1.5em; }
             .scam-container { padding: 30px 20px; }
             .runaway-btn { font-size: 1.1em; padding: 12px 24px; }
@@ -198,18 +198,18 @@
     <!-- Основной контент -->
     <div class="scam-container">
         <div class="alert-icon">🎁</div>
-        <div class="title">ВЫ ВЫИГРАЛИ IPHONE 30 PRO MAX!</div> <!--[cite: 12] -->
+        <div class="title">ВЫ ВЫИГРАЛИ IPHONE 30 PRO MAX!</div> <!--  -->
         <div class="desc">
-            Ваш IP-адрес был выбран <b style="color: var(--success);">СЛУЧАЙНО!</b> Наш алгоритм определил вас как победителя акции. <!--[cite: 12] -->
+            Ваш IP-адрес был выбран <b style="color: var(--success);">СЛУЧАЙНО!</b> Наш алгоритм определил вас как победителя акции. <!--  -->
         </div>
         
         <div class="timer-box">
             Резерв приза истекает через:<br>
-            <span class="timer" id="timer">10:00</span> <!--[cite: 12] -->
+            <span class="timer" id="timer">10:00</span> <!--  -->
         </div>
 
         <div class="btn-wrapper" id="arena">
-            <button class="runaway-btn" id="runaway">ЗАБРАТЬ ПРИЗ!!!</button> <!--[cite: 12] -->
+            <button class="runaway-btn" id="runaway">ЗАБРАТЬ ПРИЗ!!!</button> <!--  -->
         </div>
     </div>
 
@@ -234,8 +234,8 @@
 
         function moveButton(e) {
             if (e.type === 'touchstart') {
-                e.preventDefault(); // Блокируем тап, чтобы кнопка успела убежать[cite: 12]
-                if (navigator.vibrate) navigator.vibrate(50); // Микро-вибрация[cite: 12]
+                e.preventDefault(); // Блокируем тап, чтобы кнопка успела убежать 
+                if (navigator.vibrate) navigator.vibrate(50); // Микро-вибрация 
             }
 
             // Переводим кнопку в fixed для свободного полета по всему экрану
@@ -254,41 +254,41 @@
             btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
         }
 
-        btn.addEventListener('mouseenter', moveButton); //[cite: 12]
-        btn.addEventListener('touchstart', moveButton, { passive: false }); //[cite: 12]
+        btn.addEventListener('mouseenter', moveButton); // 
+        btn.addEventListener('touchstart', moveButton, { passive: false }); // 
 
         // Если чудом удалось кликнуть (или нажали через Tab+Enter)
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            triggerTrap(); //[cite: 12]
+            triggerTrap(); // 
         });
 
         // 3. Логика ловушки
         const spamUrls = [
-            "casino.html", //[cite: 12]
-            "prn.html", //[cite: 12]
-            "arabADS.html", //[cite: 12]
-            "free_robux_generator.html", //[cite: 12]
-            "cryptoscam.html", //[cite: 12]
-            "enlarge_your_pc.html", //[cite: 12]
-            "magic_taro_oracle.html", //[cite: 12]
-            "hot_singles_in_your_area.html" //[cite: 12]
+            "casino.html", // 
+            "prn.html", // 
+            "arabADS.html", // 
+            "free_robux_generator.html", // 
+            "cryptoscam.html", // 
+            "enlarge_your_pc.html", // 
+            "magic_taro_oracle.html", // 
+            "hot_singles_in_your_area.html" // 
         ];
 
         function getRandomSpamUrl() {
-            return spamUrls[Math.floor(Math.random() * spamUrls.length)]; //[cite: 12]
+            return spamUrls[Math.floor(Math.random() * spamUrls.length)]; // 
         }
 
         let isTrapped = false;
         function triggerTrap() {
             if (navigator.vibrate) {
-                navigator.vibrate([300, 100, 400, 100, 500]); // Агрессивная вибрация в качестве наказания за клик[cite: 12]
+                navigator.vibrate([300, 100, 400, 100, 500]); // Агрессивная вибрация в качестве наказания за клик 
             }
 
-            // Открываем новую вкладку[cite: 12]
+            // Открываем новую вкладку 
             window.open(getRandomSpamUrl(), '_blank');
             
-            // Спавним окна на текущей[cite: 12]
+            // Спавним окна на текущей 
             for(let i = 0; i < 4; i++) {
                 setTimeout(createToast, i * 300);
             }
@@ -303,9 +303,9 @@
 
         // 4. Генератор современных фейковых окон
         const messages = [
-            { icon: "🚨", title: "КРИТИЧЕСКАЯ УГРОЗА", text: "Обнаружен вирус Win32.Trojan.Lol" }, //[cite: 12]
-            { icon: "💋", title: "НОВОЕ СООБЩЕНИЕ", text: "HOT SINGLES IN YOUR AREA WANT TO CHAT" }, //[cite: 12]
-            { icon: "⚠️", title: "СИСТЕМНАЯ ОШИБКА", text: "Нехватка виртуальной памяти. Системный диск перегружен." }, //[cite: 12]
+            { icon: "🚨", title: "КРИТИЧЕСКАЯ УГРОЗА", text: "Обнаружен вирус Win32.Trojan.Lol" }, // 
+            { icon: "💋", title: "НОВОЕ СООБЩЕНИЕ", text: "HOT SINGLES IN YOUR AREA WANT TO CHAT" }, // 
+            { icon: "⚠️", title: "СИСТЕМНАЯ ОШИБКА", text: "Нехватка виртуальной памяти. Системный диск перегружен." }, // 
             { icon: "💳", title: "ОШИБКА ОПЛАТЫ", text: "Ваша транзакция отклонена. Обновите данные." }
         ];
 
@@ -315,14 +315,14 @@
             const toast = document.createElement('div');
             toast.className = 'modern-toast';
             
-            // Безопасный расчет координат[cite: 12]
+            // Безопасный расчет координат 
             const maxLeft = Math.max(10, window.innerWidth - 340);
             const maxTop = Math.max(10, window.innerHeight - 100);
             
-            toast.style.left = Math.random() * maxLeft + 'px'; //[cite: 12]
-            toast.style.top = Math.random() * maxTop + 'px'; //[cite: 12]
+            toast.style.left = Math.random() * maxLeft + 'px'; // 
+            toast.style.top = Math.random() * maxTop + 'px'; // 
             
-            const msg = messages[Math.floor(Math.random() * messages.length)]; //[cite: 12]
+            const msg = messages[Math.floor(Math.random() * messages.length)]; // 
             
             toast.innerHTML = `
                 <div class="toast-icon">${msg.icon}</div>
@@ -333,14 +333,14 @@
                 <div class="toast-close">✕</div>
             `;
             
-            // Нажатие на крестик только создает новые окна[cite: 12]
+            // Нажатие на крестик только создает новые окна 
             toast.addEventListener('click', (e) => {
                 e.stopPropagation(); // Не даем всплыть до body
                 toast.remove();
-                triggerTrap(); //[cite: 12]
+                triggerTrap(); // 
             });
             
-            document.body.appendChild(toast); //[cite: 12]
+            document.body.appendChild(toast); // 
         }
 
         // Автоматический спам окнами
@@ -350,27 +350,27 @@
             }
         }, 2000);
 
-        // 5. Фейковый таймер[cite: 12]
-        let timeLeft = 600; //[cite: 12]
-        const timerEl = document.getElementById('timer'); //[cite: 12]
+        // 5. Фейковый таймер 
+        let timeLeft = 600; // 
+        const timerEl = document.getElementById('timer'); // 
         setInterval(() => {
             if (timeLeft > 0 && document.getElementById('loader').style.display === 'none') {
-                timeLeft--; //[cite: 12]
-                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0'); //[cite: 12]
-                const s = (timeLeft % 60).toString().padStart(2, '0'); //[cite: 12]
-                timerEl.innerText = `${m}:${s}`; //[cite: 12]
+                timeLeft--; // 
+                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0'); // 
+                const s = (timeLeft % 60).toString().padStart(2, '0'); // 
+                timerEl.innerText = `${m}:${s}`; // 
                 
-                if (timeLeft < 50) timerEl.classList.add('blink'); //[cite: 12]
+                if (timeLeft < 50) timerEl.classList.add('blink'); // 
             }
         }, 1000); // Поставил 1000мс (реальная секунда), чтобы выглядело достовернее
 
-        // 6. Засада по времени (pop-under)[cite: 12]
+        // 6. Засада по времени (pop-under) 
         setTimeout(() => {
             if(document.getElementById('loader').style.display === 'none') {
-                let sneakyWindow = window.open(getRandomSpamUrl(), '_blank', 'width=800,height=600'); //[cite: 12]
+                let sneakyWindow = window.open(getRandomSpamUrl(), '_blank', 'width=800,height=600'); // 
                 if (sneakyWindow) {
-                    sneakyWindow.blur(); //[cite: 12]
-                    window.focus(); //[cite: 12]
+                    sneakyWindow.blur(); // 
+                    window.focus(); // 
                 }
             }
         }, 12000); 
