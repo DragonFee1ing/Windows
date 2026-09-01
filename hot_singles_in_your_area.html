@@ -663,7 +663,7 @@
         // Свайп вправо (Лайк) -> Вызов Мэтча
         function showMatch(e, name, imgUrl) {
             e.stopPropagation();
-            document.getElementById('matchText').innerText = `Вы и ${name} понравились друг другу!`;
+            document.getElementById('matchText').innerText = `Вы с ${name} понравились друг другу!`;
             document.getElementById('matchPartnerImg').src = imgUrl;
             document.getElementById('matchScreen').style.display = 'flex';
             if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
